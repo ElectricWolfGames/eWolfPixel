@@ -10,10 +10,11 @@ namespace eWolfPixelUI.ImageEditor
     public class ImageEditor
     {
         private readonly Color[,] _color = new Color[64, 64];
-        private readonly Bitmap _image;
         private readonly ImageHolder _imageHolder = new ImageHolder();
         private readonly Bitmap _previewImage;
+        private readonly float _scale = 10;
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
+        private Bitmap _image;
         private IEditable _itemsBase = null;
         private PictureBox _pictureBox;
         private PictureBox _picturePreview;
@@ -27,7 +28,7 @@ namespace eWolfPixelUI.ImageEditor
                     _color[i, j] = Color.White;
                 }
             }
-            _image = new Bitmap(600, 600);
+
             _previewImage = new Bitmap(64, 64);
         }
 
@@ -47,61 +48,41 @@ namespace eWolfPixelUI.ImageEditor
             }
         }
 
+        public Point ConvertToPixelPoint(Point localMousePosition)
+        {
+            Point p = new Point();
+            float x = localMousePosition.X / _scale;
+            float y = localMousePosition.Y / _scale;
+            p.X = (int)x;
+            p.Y = (int)y;
+            return p;
+        }
+
         internal void ClickImage(Point localMousePosition)
         {
-            float scale = 20;
-            float grid = 1 * scale;
-            float x2 = localMousePosition.X;
-            float y2 = localMousePosition.Y;
+            if (_image == null)
+                CreateDefaultImage(out _image, 600, 600);
 
-            x2 /= scale;
-            y2 /= scale;
-
-            int x3 = (int)x2;
-            int y3 = (int)y2;
-
-            _itemsBase.SetColor(x3, y3, _currentColor);
+            Point pixelPoint = ConvertToPixelPoint(localMousePosition);
+            _itemsBase.SetColor(pixelPoint, _currentColor);
 
             Pixel[,] pixels = _itemsBase.PixelArray;
 
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < 16; j++)
+                for (int j = 0; j < 24; j++)
                 {
                     Color col = PixelHelper.PixelColor(pixels[i, j]);
+
                     if (_color[i, j] != col)
                     {
+                        _previewImage.SetPixel(i, j, col);
+
                         _color[i, j] = col;
-                        float xx = i * scale;
-                        float yy = j * scale;
-                        for (int i2 = 0; i2 < grid; i2++)
-                        {
-                            for (int j2 = 0; j2 < grid; j2++)
-                            {
-                                _image.SetPixel((int)xx + i2, (int)yy + j2, col);
-                                _previewImage.SetPixel(i, j, col);
-                            }
-                        }
+                        DrawScaledPixel(i, j, col);
                     }
                 }
             }
-
-            for (float x = 0; x < _image.Width; x += grid)
-            {
-                for (int y = 0; y < _image.Height; y++)
-                {
-                    _image.SetPixel((int)x, y, System.Drawing.Color.Black);
-                }
-            }
-
-            for (float y = 0; y < _image.Height; y += grid)
-            {
-                for (float x = 0; x < _image.Width; x++)
-                {
-                    _image.SetPixel((int)x, (int)y, System.Drawing.Color.Black);
-                }
-            }
-
             _pictureBox.Image = _image;
             _picturePreview.Image = _previewImage;
         }
@@ -130,9 +111,59 @@ namespace eWolfPixelUI.ImageEditor
             }
         }
 
+        internal void MoveInImage(Point localMousePosition, MouseEventArgs mouseEventArgs)
+        {
+            if (mouseEventArgs.Button == MouseButtons.Left)
+            {
+                ClickImage(localMousePosition);
+            }
+        }
+
         internal void SetItem(IEditable item)
         {
             _itemsBase = item;
+        }
+
+        private void CreateDefaultImage(out Bitmap image, int width, int height)
+        {
+            image = new Bitmap(width, height);
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    _image.SetPixel(i, j, Color.White);
+                }
+            }
+
+            for (float x = 0; x < 24 * _scale; x += _scale)
+            {
+                for (int y = 0; y < 24 * _scale; y++)
+                {
+                    _image.SetPixel((int)x, y, Color.Black);
+                }
+            }
+
+            for (float y = 0; y < 24 * _scale; y += _scale)
+            {
+                for (float x = 0; x < 24 * _scale; x++)
+                {
+                    _image.SetPixel((int)x, (int)y, Color.Black);
+                }
+            }
+        }
+
+        private void DrawScaledPixel(int x, int y, Color col)
+        {
+            int scaleX = (int)(x * _scale);
+            int scaleY = (int)(y * _scale);
+
+            for (int i = 1; i < _scale; i++)
+            {
+                for (int j = 1; j < _scale; j++)
+                {
+                    _image.SetPixel(scaleX + i, scaleY + j, col);
+                }
+            }
         }
     }
 }

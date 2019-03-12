@@ -8,5 +8,7 @@ namespace eWolfPixelStandard.Interfaces
         Pixel[,] PixelArray { get; }
 
         void SetColor(int x, int y, Pixel color);
+
+        void SetColor(Point pixelPoint, Pixel color);
     }
 }

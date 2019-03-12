@@ -87,6 +87,7 @@
             this._editImage.TabIndex = 0;
             this._editImage.TabStop = false;
             this._editImage.Click += new System.EventHandler(this._editImage_Click);
+            this._editImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this._editImage_MouseMove);
             // 
             // Form1
             // 
@@ -94,10 +95,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 693);
             this.Controls.Add(this.splitContainer1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            this.KeyPreview = true;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

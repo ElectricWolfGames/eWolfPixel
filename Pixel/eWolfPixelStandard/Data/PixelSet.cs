@@ -4,22 +4,28 @@ using eWolfPixelStandard.Items;
 
 namespace eWolfPixelStandard.Data
 {
+    [Serializable]
     public class PixelSet
     {
         private readonly Pixel[,] _pixel;
 
-        public PixelSet()
+        public PixelSet(int width, int height)
         {
-            _pixel = new Pixel[128, 128];
+            Width = width;
+            Height = height;
 
-            for (int x = 0; x < 128; x++)
+            _pixel = new Pixel[Width, Height];
+
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < 128; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     _pixel[x, y] = new Pixel(0, 0, 0, 0);
                 }
             }
         }
+
+        public int Height { get; set; }
 
         public Pixel[,] Pixels
         {
@@ -29,8 +35,16 @@ namespace eWolfPixelStandard.Data
             }
         }
 
+        public int Width { get; set; }
+
         internal void SetPixel(int x, int y, Pixel color)
         {
+            if (x < 0 || y < 0)
+                return;
+
+            if (x >= Width || y >= Height)
+                return;
+
             _pixel[x, y] = color;
         }
     }

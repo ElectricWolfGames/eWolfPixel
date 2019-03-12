@@ -2,6 +2,9 @@
 using eWolfPixelStandard.Items;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("eWolfPixelStandard.UnitTests")]
 
 namespace eWolfPixelStandard.Project
 {

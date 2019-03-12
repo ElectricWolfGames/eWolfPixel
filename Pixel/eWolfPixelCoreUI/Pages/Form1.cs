@@ -4,6 +4,7 @@ using eWolfPixelStandard.Project;
 using eWolfPixelUI.ImageEditor;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace eWolfPixelCoreUI
@@ -31,14 +32,19 @@ namespace eWolfPixelCoreUI
 
         private void _editImage_Click(object sender, EventArgs e)
         {
-            System.Drawing.Point localMousePosition = _editImage.PointToClient(Cursor.Position);
-
+            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
             _imageEditor.ClickImage(localMousePosition);
         }
 
-        private void _projectView_MouseClick(object sender, MouseEventArgs e)
+        private void _editImage_MouseMove(object sender, MouseEventArgs mouseEventArgs)
         {
-            if (e.Button == MouseButtons.Right)
+            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
+            _imageEditor.MoveInImage(localMousePosition, mouseEventArgs);
+        }
+
+        private void _projectView_MouseClick(object sender, MouseEventArgs mouseEventArgs)
+        {
+            if (mouseEventArgs.Button == MouseButtons.Right)
             {
                 MenuItem[] itemToAdd = new MenuItem[3];
                 itemToAdd[0] = new MenuItem("Character", AddCharacter);
