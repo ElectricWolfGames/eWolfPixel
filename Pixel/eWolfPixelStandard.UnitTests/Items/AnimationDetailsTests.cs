@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using eWolfPixelStandard.Items;
 using FluentAssertions;
 using NUnit.Framework;
-using eWolfPixelStandard.Items;
 
 namespace eWolfPixelStandard.UnitTests.Items
 {

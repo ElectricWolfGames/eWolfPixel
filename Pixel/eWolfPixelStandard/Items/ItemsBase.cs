@@ -1,34 +1,14 @@
-﻿using System;
-using eWolfPixelStandard.Interfaces;
+﻿using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Project;
-using eWolfPixelStandard.Helpers;
-using System.Drawing;
+using System;
 
 namespace eWolfPixelStandard.Items
 {
     [Serializable]
-    public abstract class ItemsBase : ISaveable
+    public abstract class ItemsBase
     {
-        protected string _name;
-        protected string _path;
-
-        protected ItemTypes _itemTypes = ItemTypes.None;
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
-
-        public string Path
-        {
-            get
-            {
-                return _path;
-            }
-        }
+        private string _name;
+        private string _path;
 
         public string FullPath
         {
@@ -55,5 +35,31 @@ namespace eWolfPixelStandard.Items
                 return _itemTypes == ItemTypes.Folder;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
+        public string Path
+        {
+            get
+            {
+                return _path;
+            }
+            set
+            {
+                _path = value;
+            }
+        }
+
+        protected ItemTypes _itemTypes { get; set; }
     }
 }

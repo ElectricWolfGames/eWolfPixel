@@ -1,5 +1,8 @@
-﻿namespace eWolfPixelStandard.Items
+﻿using System;
+
+namespace eWolfPixelStandard.Items
 {
+    [Serializable]
     public class Pixel
     {
         public static Pixel Black = new Pixel(255, 0, 0, 0);
@@ -14,16 +17,11 @@
             B = b;
         }
 
-        public bool IsEmpty
-        {
-            get
-            {
-                return (A == 0
-               && B == 0
-               && G == 0
-               && R == 0);
-            }
-        }
+        public byte A { get; set; }
+
+        public byte B { get; set; }
+
+        public byte G { get; set; }
 
         public bool IsBlackout
         {
@@ -36,9 +34,17 @@
             }
         }
 
-        public byte A { get; set; }
-        public byte B { get; set; }
-        public byte G { get; set; }
+        public bool IsEmpty
+        {
+            get
+            {
+                return (A == 0
+               && B == 0
+               && G == 0
+               && R == 0);
+            }
+        }
+
         public byte R { get; set; }
 
         public override bool Equals(object obj)

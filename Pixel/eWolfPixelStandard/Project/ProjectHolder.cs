@@ -1,4 +1,5 @@
 ﻿using eWolfPixelStandard.Helpers;
+using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
 using System.Collections.Generic;
 using System.IO;
@@ -90,6 +91,18 @@ namespace eWolfPixelStandard.Project
             }
 
             return null;
+        }
+
+        public void SaveProject()
+        {
+            foreach (ItemsBase item in Items)
+            {
+                ISaveable saveable = item as ISaveable;
+                if (saveable != null)
+                {
+                    saveable.Save(_projectPath);
+                }
+            }
         }
     }
 }

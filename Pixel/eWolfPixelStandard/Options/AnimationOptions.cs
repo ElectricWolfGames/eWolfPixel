@@ -5,13 +5,12 @@ namespace eWolfPixelStandard.Options
     [Serializable]
     public class AnimationOptions
     {
-        public int Frames { get; set; }
-
-        public BorderStyle BorderStyle = new BorderStyle();
-
         public AnimationOptions()
         {
-            BorderStyle = BorderStyle.BlackBold;
+            BorderStyle = BorderStyle.Black;
         }
+
+        public BorderStyle BorderStyle { get; set; }
+        public int Frames { get; set; }
     }
 }

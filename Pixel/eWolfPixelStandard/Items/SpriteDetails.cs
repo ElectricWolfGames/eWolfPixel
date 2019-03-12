@@ -1,5 +1,5 @@
-﻿using System;
-using eWolfPixelStandard.Project;
+﻿using eWolfPixelStandard.Project;
+using System;
 
 namespace eWolfPixelStandard.Items
 {
@@ -9,8 +9,8 @@ namespace eWolfPixelStandard.Items
         public SpriteDetails(string name, string path)
         {
             _itemTypes = ItemTypes.Sprite;
-            _name = name;
-            _path = path;
+            Name = name;
+            Path = path;
         }
     }
 }

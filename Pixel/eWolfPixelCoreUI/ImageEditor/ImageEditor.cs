@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using eWolfPixelStandard.Interfaces;
+﻿using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
 using eWolfPixelUI.Helpers;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace eWolfPixelUI.ImageEditor
 {
@@ -83,6 +82,7 @@ namespace eWolfPixelUI.ImageEditor
                     }
                 }
             }
+
             _pictureBox.Image = _image;
             _picturePreview.Image = _previewImage;
         }

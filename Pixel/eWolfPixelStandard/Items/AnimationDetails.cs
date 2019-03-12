@@ -1,15 +1,15 @@
-﻿using System;
-using eWolfPixelStandard.Data;
-using eWolfPixelStandard.Project;
+﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
-using System.Drawing;
 using eWolfPixelStandard.Options;
+using eWolfPixelStandard.Project;
+using System;
+using System.Drawing;
 
 namespace eWolfPixelStandard.Items
 {
     [Serializable]
-    public class AnimationDetails : ItemsBase, IEditable
+    public class AnimationDetails : ItemsBase, IEditable, ISaveable
     {
         private AnimationOptions _animationOptions;
 
@@ -18,9 +18,11 @@ namespace eWolfPixelStandard.Items
         public AnimationDetails(string name, string path)
         {
             _itemTypes = ItemTypes.Animation;
-            _name = name;
-            _path = path;
+            Name = name;
+            Path = path;
         }
+
+        public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
 
         public Pixel[,] PixelArray
         {
@@ -28,6 +30,15 @@ namespace eWolfPixelStandard.Items
             {
                 return _pixelSet.Pixels;
             }
+        }
+
+        public PixelSet PixelSet { get => _pixelSet; set => _pixelSet = value; }
+
+        public void Save(string projectPath)
+        {
+            _itemTypes = ItemTypes.Animation;
+            PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
+            ph.SaveDataSingle(this);
         }
 
         public void SetColor(int x, int y, Pixel color)
@@ -52,12 +63,6 @@ namespace eWolfPixelStandard.Items
         {
             PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
             return ph.LoadDataSingle(filename);
-        }
-
-        internal void Save(string projectPath)
-        {
-            PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
-            ph.SaveDataSingle(this);
         }
 
         private void UpdateImage(int x, int y)

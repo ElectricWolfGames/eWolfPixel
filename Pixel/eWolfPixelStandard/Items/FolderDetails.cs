@@ -7,8 +7,8 @@ namespace eWolfPixelStandard.Items
         public FolderDetails(string name, string path)
         {
             _itemTypes = ItemTypes.Folder;
-            _name = name;
-            _path = path;
+            Name = name;
+            Path = path;
         }
     }
 }

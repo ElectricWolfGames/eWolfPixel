@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using eWolfPixelStandard.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using eWolfPixelStandard.Interfaces;
-using System;
 
 namespace eWolfPixelStandard.Helpers
 {

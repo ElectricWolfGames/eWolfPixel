@@ -93,6 +93,9 @@ namespace eWolfPixelCoreUI
             // preselect item
             foreach (ItemsBase item in items)
             {
+                if (item == null)
+                    continue;
+
                 if (item.Name == "Walk")
                 {
                     IEditable editable = item as IEditable;
@@ -107,6 +110,9 @@ namespace eWolfPixelCoreUI
 
             foreach (ItemsBase item in items)
             {
+                if (item == null)
+                    continue;
+
                 TreeNode tn = new TreeNode(item.Name);
                 tn.Tag = item;
                 if (nodeMap.TryGetValue(item.Path, out TreeNode parent))
@@ -124,6 +130,11 @@ namespace eWolfPixelCoreUI
                 }
             }
             _projectView.ExpandAll();
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _projectHolder.SaveProject();
         }
 
         private void SetEditItem(IEditable item)
