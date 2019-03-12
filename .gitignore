@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/eWolfPixels
+/packages
+/Pixel/eWolfPixelCoreUI/bin/Debug
+/Pixel/eWolfPixelCoreUI/obj/Debug
+/Pixel/eWolfPixelStandard/bin/Debug/netstandard2.0
+/Pixel/eWolfPixelStandard/obj
+/Pixel/eWolfPixelStandard.UnitTests/bin/Debug/netcoreapp2.1
+/Pixel/eWolfPixelStandard.UnitTests/obj
+/Pixel/eWolfPixelStandardExtra/obj/Debug/netcoreapp2.1
