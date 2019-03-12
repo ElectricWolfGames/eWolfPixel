@@ -12,9 +12,11 @@ namespace eWolfPixelUI.ImageEditor
         private readonly Color[,] _color = new Color[64, 64];
         private readonly Bitmap _image;
         private readonly ImageHolder _imageHolder = new ImageHolder();
+        private readonly Bitmap _previewImage;
+        private Pixel _currentColor = new Pixel(255, 255, 0, 0);
         private IEditable _itemsBase = null;
         private PictureBox _pictureBox;
-        private Pixel _currentColor = new Pixel(255, 255, 0, 0);
+        private PictureBox _picturePreview;
 
         public ImageEditor()
         {
@@ -26,6 +28,7 @@ namespace eWolfPixelUI.ImageEditor
                 }
             }
             _image = new Bitmap(600, 600);
+            _previewImage = new Bitmap(64, 64);
         }
 
         public PictureBox EditImage
@@ -33,6 +36,14 @@ namespace eWolfPixelUI.ImageEditor
             set
             {
                 _pictureBox = value;
+            }
+        }
+
+        public PictureBox PreviewImage
+        {
+            set
+            {
+                _picturePreview = value;
             }
         }
 
@@ -68,6 +79,7 @@ namespace eWolfPixelUI.ImageEditor
                             for (int j2 = 0; j2 < grid; j2++)
                             {
                                 _image.SetPixel((int)xx + i2, (int)yy + j2, col);
+                                _previewImage.SetPixel(i, j, col);
                             }
                         }
                     }
@@ -91,11 +103,7 @@ namespace eWolfPixelUI.ImageEditor
             }
 
             _pictureBox.Image = _image;
-        }
-
-        internal void SetItem(IEditable item)
-        {
-            _itemsBase = item;
+            _picturePreview.Image = _previewImage;
         }
 
         internal void KeyPressed(KeyPressEventArgs e)
@@ -120,6 +128,11 @@ namespace eWolfPixelUI.ImageEditor
             {
                 _currentColor = new Pixel(255, 255, 255, 255);
             }
+        }
+
+        internal void SetItem(IEditable item)
+        {
+            _itemsBase = item;
         }
     }
 }

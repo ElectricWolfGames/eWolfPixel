@@ -10,17 +10,73 @@ namespace eWolfPixelCoreUI
 {
     public partial class Form1 : Form
     {
-        private ProjectHolder _projectHolder = new ProjectHolder();
         private ImageEditor _imageEditor = new ImageEditor();
+        private ProjectHolder _projectHolder = new ProjectHolder();
 
         public Form1()
         {
             InitializeComponent();
-            _projectHolder.LoadProject(@"C:\GitHub\eWolfPixels\Pixel\DummyTestProject\");
+            _projectHolder.LoadProject(@"C:\GitHub\eWolfPixel\Pixel\DummyTestProject\");
 
             PopulateTree();
 
             _imageEditor.EditImage = _editImage;
+            _imageEditor.PreviewImage = _previewImage;
+        }
+
+        protected void _projectView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            OpenItem(e);
+        }
+
+        private void _editImage_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Point localMousePosition = _editImage.PointToClient(Cursor.Position);
+
+            _imageEditor.ClickImage(localMousePosition);
+        }
+
+        private void _projectView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MenuItem[] itemToAdd = new MenuItem[3];
+                itemToAdd[0] = new MenuItem("Character", AddCharacter);
+                itemToAdd[1] = new MenuItem("Animation", AddAnimation);
+                itemToAdd[2] = new MenuItem("Sprite");
+
+                ContextMenu cm = new ContextMenu();
+                cm.MenuItems.Add("Add", itemToAdd);
+
+                _projectView.ContextMenu = cm;
+            }
+        }
+
+        private void AddAnimation(object sender, EventArgs e)
+        {
+            _projectHolder.CreateAnimation("Walk", "\\Root\\Char1");
+            PopulateTree();
+        }
+
+        private void AddCharacter(object sender, EventArgs e)
+        {
+            _projectHolder.CreateCharacter("Char1", "\\Root");
+
+            PopulateTree();
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _imageEditor.KeyPressed(e);
+        }
+
+        private void OpenItem(TreeViewEventArgs e)
+        {
+            if (e.Node.Text == "Walk")
+            {
+                ItemsBase itemBase = e.Node.Tag as ItemsBase;
+                // _imageEditor.ShowImage();
+            }
         }
 
         private void PopulateTree()
@@ -67,61 +123,6 @@ namespace eWolfPixelCoreUI
         private void SetEditItem(IEditable item)
         {
             _imageEditor.SetItem(item);
-        }
-
-        private void _projectView_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                MenuItem[] itemToAdd = new MenuItem[3];
-                itemToAdd[0] = new MenuItem("Character", AddCharacter);
-                itemToAdd[1] = new MenuItem("Animation", AddAnimation);
-                itemToAdd[2] = new MenuItem("Sprite");
-
-                ContextMenu cm = new ContextMenu();
-                cm.MenuItems.Add("Add", itemToAdd);
-
-                _projectView.ContextMenu = cm;
-            }
-        }
-
-        protected void _projectView_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            OpenItem(e);
-        }
-
-        private void OpenItem(TreeViewEventArgs e)
-        {
-            if (e.Node.Text == "Walk")
-            {
-                ItemsBase itemBase = e.Node.Tag as ItemsBase;
-                // _imageEditor.ShowImage();
-            }
-        }
-
-        private void AddAnimation(object sender, EventArgs e)
-        {
-            _projectHolder.CreateAnimation("Walk", "\\Root\\Char1");
-            PopulateTree();
-        }
-
-        private void AddCharacter(object sender, EventArgs e)
-        {
-            _projectHolder.CreateCharacter("Char1", "\\Root");
-
-            PopulateTree();
-        }
-
-        private void _editImage_Click(object sender, EventArgs e)
-        {
-            System.Drawing.Point localMousePosition = _editImage.PointToClient(Cursor.Position);
-
-            _imageEditor.ClickImage(localMousePosition);
-        }
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _imageEditor.KeyPressed(e);
         }
     }
 }
