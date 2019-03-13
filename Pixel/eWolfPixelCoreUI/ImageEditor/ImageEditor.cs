@@ -8,6 +8,13 @@ namespace eWolfPixelUI.ImageEditor
 {
     public class ImageEditor
     {
+        private const int ImageOffSetX = 2;
+        private const int ImageOffSetY = 2;
+        private const int ImageWidth = 400;
+        private const int ImageHeight = 500;
+        private const int ImageEditWidth = ImageWidth - 2;
+        private const int ImageEditHeight = ImageHeight - 2;
+
         private readonly int _currentDirection = 0;
         private readonly FrameHolder[,] _frameHolder = new FrameHolder[8, 4];
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
@@ -15,7 +22,7 @@ namespace eWolfPixelUI.ImageEditor
         private IEditable _itemsBase = null;
         private PictureBox _pictureBox;
         private PictureBox _picturePreview;
-        private float _scale = 10;
+        private int _scale = 10;
 
         public ImageEditor()
         {
@@ -63,7 +70,6 @@ namespace eWolfPixelUI.ImageEditor
             Point pixelPoint = ConvertToPixelPoint(localMousePosition);
             _itemsBase.SetColor(pixelPoint, _currentColor);
             DrawFrame();
-
             ShowFrame();
         }
 
@@ -90,11 +96,11 @@ namespace eWolfPixelUI.ImageEditor
             }
             if (e.KeyChar == '2')
             {
-                _currentColor = new Pixel(255, 255, 0, 0);
+                _currentColor = new Pixel(0, 0, 0, 0);
             }
             if (e.KeyChar == '3')
             {
-                _currentColor = new Pixel(255, 0, 255, 0);
+                _currentColor = new Pixel(255, 255, 0, 0);
             }
             if (e.KeyChar == '4')
             {
@@ -137,11 +143,11 @@ namespace eWolfPixelUI.ImageEditor
 
         internal void MoveWheelImage(Point localMousePosition, int wheelDelta)
         {
-            _scale -= wheelDelta;
+            _scale += wheelDelta;
             if (_scale < 0)
                 _scale = 1;
 
-            FrameHolder.Image = CreateDefaultImage(600, 600);
+            FrameHolder.Image = CreateDefaultImage(400, 500);
             FrameHolder.Color = null;
             DrawFrame();
             ShowFrame();
@@ -156,7 +162,7 @@ namespace eWolfPixelUI.ImageEditor
         {
             if (FrameHolder.Image == null)
             {
-                FrameHolder.Image = CreateDefaultImage(600, 600);
+                FrameHolder.Image = CreateDefaultImage(ImageWidth, ImageHeight);
             }
 
             if (FrameHolder.PreviewImage == null)
@@ -168,27 +174,63 @@ namespace eWolfPixelUI.ImageEditor
         private Bitmap CreateDefaultImage(int width, int height)
         {
             Bitmap image = new Bitmap(width, height);
-            for (int i = 0; i < width; i++)
+
+            for (int i = 0; i < width - (ImageOffSetX * 2); i++)
             {
-                for (int j = 0; j < height; j++)
+                image.SetPixel(i + ImageOffSetX, 0, Color.Black);
+                image.SetPixel(i + ImageOffSetX, 1, Color.Black);
+                image.SetPixel(i + ImageOffSetX, height - 1, Color.Black);
+                image.SetPixel(i + ImageOffSetX, height - 2, Color.Black);
+            }
+
+            for (int i = 0; i < height - (ImageOffSetY * 2); i++)
+            {
+                image.SetPixel(0, i + ImageOffSetX, Color.Black);
+                image.SetPixel(1, i + ImageOffSetX, Color.Black);
+                image.SetPixel(width - 1, i + ImageOffSetX, Color.Black);
+                image.SetPixel(width - 2, i + ImageOffSetX, Color.Black);
+            }
+
+            for (int i = 0; i < width - (ImageOffSetX * 2); i++)
+            {
+                for (int j = 0; j < height - (ImageOffSetY * 2); j++)
                 {
-                    image.SetPixel(i, j, Color.White);
+                    image.SetPixel(i + ImageOffSetX, j + ImageOffSetY, Color.White);
                 }
             }
 
-            for (float x = 0; x < 24 * _scale; x += _scale)
+            if (ShowGridPixels)
             {
-                for (int y = 0; y < 24 * _scale; y++)
+                for (int x = 0; x < 24 * _scale; x += _scale)
                 {
-                    image.SetPixel((int)x, y, Color.Black);
-                }
-            }
+                    int mainX = x + ImageOffSetX;
+                    if (mainX >= ImageEditWidth)
+                        continue;
 
-            for (float y = 0; y < 24 * _scale; y += _scale)
-            {
-                for (float x = 0; x < 24 * _scale; x++)
+                    for (int y = 0; y < 24 * _scale; y++)
+                    {
+                        int mainY = y + ImageOffSetY;
+                        if (mainY >= ImageEditHeight)
+                            continue;
+
+                        image.SetPixel(mainX, mainY, Color.Black);
+                    }
+                }
+
+                for (int y = 0; y < 24 * _scale; y += _scale)
                 {
-                    image.SetPixel((int)x, (int)y, Color.Black);
+                    int mainY = y + ImageOffSetY;
+                    if (mainY >= ImageEditHeight)
+                        continue;
+
+                    for (int x = 0; x < 24 * _scale; x++)
+                    {
+                        int mainX = x + ImageOffSetX;
+                        if (mainX >= ImageEditWidth)
+                            continue;
+
+                        image.SetPixel(mainX, mainY, Color.Black);
+                    }
                 }
             }
             return image;
@@ -219,14 +261,23 @@ namespace eWolfPixelUI.ImageEditor
 
         private void DrawScaledPixel(int x, int y, Color col)
         {
-            int scaleX = (int)(x * _scale);
-            int scaleY = (int)(y * _scale);
+            int scaleX = x * _scale;
+            int scaleY = y * _scale;
+            int start = ShowGridPixels ? 1 : 0;
 
-            for (int i = 1; i < _scale; i++)
+            for (int i = start; i < _scale; i++)
             {
-                for (int j = 1; j < _scale; j++)
+                int mainX = scaleX + i + ImageOffSetX;
+                if (mainX >= ImageEditWidth)
+                    continue;
+
+                for (int j = start; j < _scale; j++)
                 {
-                    FrameHolder.Image.SetPixel(scaleX + i, scaleY + j, col);
+                    int mainY = scaleY + j + ImageOffSetY;
+                    if (mainY >= ImageEditHeight)
+                        continue;
+
+                    FrameHolder.Image.SetPixel(mainX, mainY, col);
                 }
             }
         }
@@ -235,6 +286,14 @@ namespace eWolfPixelUI.ImageEditor
         {
             _pictureBox.Image = FrameHolder.Image;
             _picturePreview.Image = FrameHolder.PreviewImage;
+        }
+
+        private bool ShowGridPixels
+        {
+            get
+            {
+                return (_scale > 4);
+            }
         }
     }
 }

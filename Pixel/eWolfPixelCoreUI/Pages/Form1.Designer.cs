@@ -30,20 +30,20 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._projectView = new System.Windows.Forms.TreeView();
+            this._animImage = new System.Windows.Forms.PictureBox();
             this._previewImage = new System.Windows.Forms.PictureBox();
             this._editImage = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._animImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._animImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._animImage)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -62,6 +62,7 @@
             this.splitContainer1.Panel2.Controls.Add(this._animImage);
             this.splitContainer1.Panel2.Controls.Add(this._previewImage);
             this.splitContainer1.Panel2.Controls.Add(this._editImage);
+            this.splitContainer1.Panel2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.MouseWheel);
             this.splitContainer1.Size = new System.Drawing.Size(1070, 669);
             this.splitContainer1.SplitterDistance = 356;
             this.splitContainer1.TabIndex = 0;
@@ -78,6 +79,14 @@
             this._projectView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this._projectView_AfterSelect);
             this._projectView.MouseClick += new System.Windows.Forms.MouseEventHandler(this._projectView_MouseClick);
             // 
+            // _animImage
+            // 
+            this._animImage.Location = new System.Drawing.Point(451, 341);
+            this._animImage.Name = "_animImage";
+            this._animImage.Size = new System.Drawing.Size(167, 176);
+            this._animImage.TabIndex = 2;
+            this._animImage.TabStop = false;
+            // 
             // _previewImage
             // 
             this._previewImage.Location = new System.Drawing.Point(451, 159);
@@ -90,7 +99,7 @@
             // 
             this._editImage.Location = new System.Drawing.Point(46, 50);
             this._editImage.Name = "_editImage";
-            this._editImage.Size = new System.Drawing.Size(399, 467);
+            this._editImage.Size = new System.Drawing.Size(400, 500);
             this._editImage.TabIndex = 0;
             this._editImage.TabStop = false;
             this._editImage.Click += new System.EventHandler(this._editImage_Click);
@@ -121,14 +130,6 @@
             this.saveProjectToolStripMenuItem.Text = "Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItem_Click);
             // 
-            // _animImage
-            // 
-            this._animImage.Location = new System.Drawing.Point(451, 341);
-            this._animImage.Name = "_animImage";
-            this._animImage.Size = new System.Drawing.Size(167, 176);
-            this._animImage.TabIndex = 2;
-            this._animImage.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,17 +141,15 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            this.splitContainer1.Panel2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.MouseWheel);
-
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._animImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._animImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
