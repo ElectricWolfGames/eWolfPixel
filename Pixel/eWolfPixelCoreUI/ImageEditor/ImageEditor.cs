@@ -156,6 +156,8 @@ namespace eWolfPixelUI.ImageEditor
         internal void SetItem(IEditable item)
         {
             _itemsBase = item;
+            DrawFrame();
+            ShowFrame();
         }
 
         private void CheckItem()

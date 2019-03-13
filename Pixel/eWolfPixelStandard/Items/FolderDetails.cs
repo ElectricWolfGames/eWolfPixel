@@ -6,7 +6,7 @@ namespace eWolfPixelStandard.Items
     {
         public FolderDetails(string name, string path)
         {
-            _itemTypes = ItemTypes.Folder;
+            ItemType = ItemTypes.Folder;
             Name = name;
             Path = path;
         }

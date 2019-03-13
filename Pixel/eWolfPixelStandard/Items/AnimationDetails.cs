@@ -19,7 +19,7 @@ namespace eWolfPixelStandard.Items
 
         public AnimationDetails(string name, string path)
         {
-            _itemTypes = ItemTypes.Animation;
+            ItemType = ItemTypes.Animation;
             Name = name;
             Path = path;
         }
@@ -48,7 +48,7 @@ namespace eWolfPixelStandard.Items
 
         public override void PostLoadFix()
         {
-            _itemTypes = ItemTypes.Animation;
+            ItemType = ItemTypes.Animation;
 
             if (_pixelAnimations == null)
             {
@@ -65,7 +65,7 @@ namespace eWolfPixelStandard.Items
 
         public void Save(string projectPath)
         {
-            _itemTypes = ItemTypes.Animation;
+            ItemType = ItemTypes.Animation;
             PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
             ph.SaveDataSingle(this);
 
@@ -87,7 +87,11 @@ namespace eWolfPixelStandard.Items
         internal static ItemsBase Load(string projectPath, string filename)
         {
             PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
-            return ph.LoadDataSingle(filename);
+            ItemsBase item = ph.LoadDataSingle(filename);
+            item.PostLoadFix();
+            item.FullPath = filename;
+
+            return item;
         }
 
         private void ExportImages()

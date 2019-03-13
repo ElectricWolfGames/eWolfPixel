@@ -17,13 +17,23 @@ namespace eWolfPixelStandard.Items
             {
                 return _path + "\\" + _name;
             }
+
+            set
+            {
+                string file = value;
+                string[] parts = file.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string name = parts[parts.Length - 1].Replace($".{ItemHelper.GetType(ItemType)}", string.Empty);
+                _name = name;
+                _path = "\\Root\\" + parts[parts.Length - 2];
+            }
         }
 
         public string GetFileName
         {
             get
             {
-                string path = $"{FullPath.TrimStart('\\')}.{ItemHelper.GetType(_itemTypes)}";
+                string path = $"{FullPath.TrimStart('\\')}.{ItemHelper.GetType(ItemType)}";
                 path = path.Replace("Root\\", string.Empty);
                 return path;
             }
@@ -33,7 +43,7 @@ namespace eWolfPixelStandard.Items
         {
             get
             {
-                return _itemTypes == ItemTypes.Folder;
+                return ItemType == ItemTypes.Folder;
             }
         }
 
@@ -61,7 +71,7 @@ namespace eWolfPixelStandard.Items
             }
         }
 
-        protected ItemTypes _itemTypes { get; set; }
+        public ItemTypes ItemType { get; protected set; }
 
         public virtual void PostLoadFix()
         {

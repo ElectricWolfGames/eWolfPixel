@@ -13,6 +13,7 @@ namespace eWolfPixelStandard.Helpers
             { ItemTypes.Animation, "ANIM"},
             { ItemTypes.TextFile, "TXT"},
             { ItemTypes.Folder, ""},
+            { ItemTypes.None, ""},
         };
 
         public static ItemTypes GetType(string extensions)

@@ -22,12 +22,13 @@ namespace eWolfPixelCoreUI
             InitializeComponent();
             _projectHolder.LoadProject(@"C:\GitHub\eWolfPixel\Pixel\DummyTestProject\");
 
+            _imageEditor.EditImage = _editImage;
+            _imageEditor.PreviewImage = _previewImage;
+
             InitializeServices();
 
             PopulateTree();
 
-            _imageEditor.EditImage = _editImage;
-            _imageEditor.PreviewImage = _previewImage;
             _animationPreview = new AnimationPreview(_imageEditor, _animImage);
 
             CreateAnimationTimer();
@@ -111,10 +112,11 @@ namespace eWolfPixelCoreUI
 
         private void OpenItem(TreeViewEventArgs e)
         {
-            if (e.Node.Text == "Walk")
+            ItemsBase itemBase = e.Node.Tag as ItemsBase;
+            if (itemBase.ItemType == ItemTypes.Animation)
             {
-                ItemsBase itemBase = e.Node.Tag as ItemsBase;
-                // _imageEditor.ShowImage();
+                if (itemBase is IEditable editable)
+                    _imageEditor.SetItem(editable);
             }
         }
 
@@ -128,8 +130,6 @@ namespace eWolfPixelCoreUI
             {
                 if (item == null)
                     continue;
-
-                item.PostLoadFix();
 
                 if (item.Name == "Walk")
                 {

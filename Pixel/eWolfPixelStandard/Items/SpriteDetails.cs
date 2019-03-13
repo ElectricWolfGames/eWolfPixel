@@ -8,7 +8,7 @@ namespace eWolfPixelStandard.Items
     {
         public SpriteDetails(string name, string path)
         {
-            _itemTypes = ItemTypes.Sprite;
+            ItemType = ItemTypes.Sprite;
             Name = name;
             Path = path;
         }
