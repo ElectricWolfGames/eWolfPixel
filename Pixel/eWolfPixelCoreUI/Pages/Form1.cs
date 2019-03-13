@@ -102,6 +102,13 @@ namespace eWolfPixelCoreUI
             ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
         }
 
+        private void MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            int wheelDelta = e.Delta / 120;
+            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
+            _imageEditor.MoveWheelImage(localMousePosition, wheelDelta);
+        }
+
         private void OpenItem(TreeViewEventArgs e)
         {
             if (e.Node.Text == "Walk")

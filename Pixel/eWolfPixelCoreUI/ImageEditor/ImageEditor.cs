@@ -1,7 +1,6 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,14 +10,12 @@ namespace eWolfPixelUI.ImageEditor
     {
         private readonly int _currentDirection = 0;
         private readonly FrameHolder[,] _frameHolder = new FrameHolder[8, 4];
-        private readonly ImageHolder _imageHolder = new ImageHolder();
-        private readonly float _scale = 10;
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
         private int _currentFrame;
         private IEditable _itemsBase = null;
-
         private PictureBox _pictureBox;
         private PictureBox _picturePreview;
+        private float _scale = 10;
 
         public ImageEditor()
         {
@@ -73,7 +70,9 @@ namespace eWolfPixelUI.ImageEditor
         internal Image GetFrame(int direction, int frame)
         {
             if (_frameHolder[direction, frame] == null)
+            {
                 _frameHolder[direction, frame] = new FrameHolder();
+            }
 
             if (_frameHolder[direction, frame].PreviewImage == null)
             {
@@ -134,6 +133,18 @@ namespace eWolfPixelUI.ImageEditor
             {
                 ClickImage(localMousePosition);
             }
+        }
+
+        internal void MoveWheelImage(Point localMousePosition, int wheelDelta)
+        {
+            _scale -= wheelDelta;
+            if (_scale < 0)
+                _scale = 1;
+
+            FrameHolder.Image = CreateDefaultImage(600, 600);
+            FrameHolder.Color = null;
+            DrawFrame();
+            ShowFrame();
         }
 
         internal void SetItem(IEditable item)
