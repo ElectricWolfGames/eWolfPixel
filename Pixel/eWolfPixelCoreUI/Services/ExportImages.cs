@@ -24,9 +24,9 @@ namespace eWolfPixelUI.Services
             int directions = 8;
             int frames = 4;
 
-            for (int i = 0; i < directions - 1; i++)
+            for (int i = 0; i < directions; i++)
             {
-                for (int j = 0; j < frames - 1; j++)
+                for (int j = 0; j < frames; j++)
                 {
                     Bitmap image = CreateImage(pixelArray[i, j]);
                     string filename = $"{outputFileName}_{i}_{j}.png";

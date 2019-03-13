@@ -13,10 +13,9 @@ namespace eWolfPixelStandard.Items
     public class AnimationDetails : ItemsBase, IEditable, ISaveable
     {
         private AnimationOptions _animationOptions;
+        private PixelSet[,] _pixelAnimations;
         private int _currentDirection = 0;
         private int _currentFrame = 0;
-        private PixelSet[,] _pixelAnimations;
-        private PixelSet _pixelSet;
 
         public AnimationDetails(string name, string path)
         {
@@ -25,34 +24,31 @@ namespace eWolfPixelStandard.Items
             Path = path;
         }
 
-        public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
+        public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
 
-        public Directions8Way Direction
-        {
-            set
-            {
-                _currentDirection = (int)value;
-            }
-        }
+        public int Direction { get => _currentDirection; set => _currentDirection = value; }
+
+        public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
 
         public Pixel[,] PixelArray
         {
             get
             {
-                return _pixelSet.Pixels;
+                return _pixelAnimations[_currentDirection, _currentFrame].Pixels;
             }
         }
 
-        public PixelSet PixelSet { get => _pixelSet; set => _pixelSet = value; }
-
-        public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
+        public PixelSet PixelSetAnim
+        {
+            get
+            {
+                return _pixelAnimations[_currentDirection, _currentFrame];
+            }
+        }
 
         public override void PostLoadFix()
         {
             _itemTypes = ItemTypes.Animation;
-
-            if (_pixelSet == null)
-                _pixelSet = new PixelSet(24, 24);
 
             if (_pixelAnimations == null)
             {
@@ -76,22 +72,15 @@ namespace eWolfPixelStandard.Items
             ExportImages();
         }
 
-        private void ExportImages()
-        {
-            IExportImage exportIamge = ServiceLocator.Instance.GetService<IExportImage>();
-            if (exportIamge != null)
-                exportIamge.Export(this, _pixelAnimations);
-        }
-
         public void SetColor(int x, int y, Pixel color)
         {
-            _pixelSet.SetPixel(x, y, color);
+            PixelSetAnim.SetPixel(x, y, color);
             UpdateImage(x, y);
         }
 
         public void SetColor(Point pixelPoint, Pixel color)
         {
-            _pixelSet.SetPixel(pixelPoint.X, pixelPoint.Y, color);
+            PixelSetAnim.SetPixel(pixelPoint.X, pixelPoint.Y, color);
             UpdateImage(pixelPoint.X, pixelPoint.Y);
         }
 
@@ -101,12 +90,19 @@ namespace eWolfPixelStandard.Items
             return ph.LoadDataSingle(filename);
         }
 
+        private void ExportImages()
+        {
+            IExportImage exportIamge = ServiceLocator.Instance.GetService<IExportImage>();
+            if (exportIamge != null)
+                exportIamge.Export(this, _pixelAnimations);
+        }
+
         private void UpdateImage(int x, int y)
         {
             if (_animationOptions == null)
                 _animationOptions = new AnimationOptions();
 
-            BorderHelper.Apply(_animationOptions.BorderStyle, _pixelSet);
+            BorderHelper.Apply(_animationOptions.BorderStyle, PixelSetAnim);
         }
     }
 }

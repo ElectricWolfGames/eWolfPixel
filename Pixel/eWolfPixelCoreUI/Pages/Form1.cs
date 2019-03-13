@@ -144,7 +144,7 @@ namespace eWolfPixelCoreUI
             _projectView.ExpandAll();
         }
 
-        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _projectHolder.SaveProject();
         }
