@@ -8,29 +8,19 @@ namespace eWolfPixelUI.ImageEditor
 {
     public class ImageEditor
     {
-        private readonly Color[,] _color = new Color[64, 64];
+        private readonly int _currentDirection = 0;
+        private readonly FrameHolder[,] _frameHolder = new FrameHolder[8, 4];
         private readonly ImageHolder _imageHolder = new ImageHolder();
-
         private readonly float _scale = 10;
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
-        private int _currentFrame = 0;
-        private readonly int _currentDirection = 0;
-        private readonly Bitmap _image;
-        private Bitmap[,] _imageArray;
-        private Bitmap[,] _previewImageArray;
+        private int _currentFrame;
         private IEditable _itemsBase = null;
+
         private PictureBox _pictureBox;
         private PictureBox _picturePreview;
 
         public ImageEditor()
         {
-            for (int i = 0; i < 64; i++)
-            {
-                for (int j = 0; j < 64; j++)
-                {
-                    _color[i, j] = Color.White;
-                }
-            }
         }
 
         public PictureBox EditImage
@@ -38,6 +28,17 @@ namespace eWolfPixelUI.ImageEditor
             set
             {
                 _pictureBox = value;
+            }
+        }
+
+        public FrameHolder FrameHolder
+        {
+            get
+            {
+                if (_frameHolder[_currentDirection, _currentFrame] == null)
+                    _frameHolder[_currentDirection, _currentFrame] = new FrameHolder();
+
+                return _frameHolder[_currentDirection, _currentFrame];
             }
         }
 
@@ -61,32 +62,11 @@ namespace eWolfPixelUI.ImageEditor
 
         internal void ClickImage(Point localMousePosition)
         {
-            if (_imageArray == null)
-                CreateAllDefaultImage(600, 600);
-
             Point pixelPoint = ConvertToPixelPoint(localMousePosition);
             _itemsBase.SetColor(pixelPoint, _currentColor);
+            DrawFrame();
 
-            Pixel[,] pixels = _itemsBase.PixelArray;
-
-            for (int i = 0; i < 24; i++)
-            {
-                for (int j = 0; j < 24; j++)
-                {
-                    Color col = PixelHelper.PixelColor(pixels[i, j]);
-
-                    if (_color[i, j] != col)
-                    {
-                        _previewImageArray[_currentDirection, _currentFrame].SetPixel(i, j, col);
-
-                        _color[i, j] = col;
-                        DrawScaledPixel(i, j, col);
-                    }
-                }
-            }
-
-            _pictureBox.Image = _imageArray[_currentDirection, _currentFrame];
-            _picturePreview.Image = _previewImageArray[_currentDirection, _currentFrame];
+            ShowFrame();
         }
 
         internal void KeyPressed(KeyPressEventArgs e)
@@ -117,6 +97,8 @@ namespace eWolfPixelUI.ImageEditor
                 if (_currentFrame > 0)
                 {
                     _currentFrame -= 1;
+                    _itemsBase.CurrentFrame = _currentFrame;
+                    DrawFrame();
                     ShowFrame();
                 }
             }
@@ -125,16 +107,11 @@ namespace eWolfPixelUI.ImageEditor
                 if (_currentFrame < 3)
                 {
                     _currentFrame += 1;
+                    _itemsBase.CurrentFrame = _currentFrame;
+                    DrawFrame();
                     ShowFrame();
                 }
             }
-        }
-
-        private void ShowFrame()
-        {
-            _itemsBase.CurrentFrame = _currentFrame;
-            _pictureBox.Image = _imageArray[_currentDirection, _currentFrame];
-            _picturePreview.Image = _previewImageArray[_currentDirection, _currentFrame];
         }
 
         internal void MoveInImage(Point localMousePosition, MouseEventArgs mouseEventArgs)
@@ -150,23 +127,16 @@ namespace eWolfPixelUI.ImageEditor
             _itemsBase = item;
         }
 
-        private void CreateAllDefaultImage(int width, int height)
+        private void CheckItem()
         {
-            _imageArray = new Bitmap[8, 4];
-            for (int i = 0; i < 8; i++)
+            if (FrameHolder.Image == null)
             {
-                for (int j = 0; j < 4; j++)
-                {
-                    _imageArray[i, j] = CreateDefaultImage(width, height);
-                }
+                FrameHolder.Image = CreateDefaultImage(600, 600);
             }
-            _previewImageArray = new Bitmap[8, 4];
-            for (int i = 0; i < 8; i++)
+
+            if (FrameHolder.PreviewImage == null)
             {
-                for (int j = 0; j < 4; j++)
-                {
-                    _previewImageArray[i, j] = new Bitmap(24, 24);
-                }
+                FrameHolder.PreviewImage = new Bitmap(64, 64);
             }
         }
 
@@ -199,6 +169,29 @@ namespace eWolfPixelUI.ImageEditor
             return image;
         }
 
+        private void DrawFrame()
+        {
+            CheckItem();
+
+            Pixel[,] pixels = _itemsBase.PixelArray;
+
+            for (int i = 0; i < 24; i++)
+            {
+                for (int j = 0; j < 24; j++)
+                {
+                    Color col = PixelHelper.PixelColor(pixels[i, j]);
+
+                    if (FrameHolder.Color[i, j] != col)
+                    {
+                        FrameHolder.PreviewImage.SetPixel(i, j, col);
+
+                        FrameHolder.Color[i, j] = col;
+                        DrawScaledPixel(i, j, col);
+                    }
+                }
+            }
+        }
+
         private void DrawScaledPixel(int x, int y, Color col)
         {
             int scaleX = (int)(x * _scale);
@@ -208,9 +201,15 @@ namespace eWolfPixelUI.ImageEditor
             {
                 for (int j = 1; j < _scale; j++)
                 {
-                    _imageArray[_currentDirection, _currentFrame].SetPixel(scaleX + i, scaleY + j, col);
+                    FrameHolder.Image.SetPixel(scaleX + i, scaleY + j, col);
                 }
             }
+        }
+
+        private void ShowFrame()
+        {
+            _pictureBox.Image = FrameHolder.Image;
+            _picturePreview.Image = FrameHolder.PreviewImage;
         }
     }
 }
