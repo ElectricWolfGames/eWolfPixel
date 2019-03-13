@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -67,6 +68,19 @@ namespace eWolfPixelUI.ImageEditor
             DrawFrame();
 
             ShowFrame();
+        }
+
+        internal Image GetFrame(int direction, int frame)
+        {
+            if (_frameHolder[direction, frame] == null)
+                _frameHolder[direction, frame] = new FrameHolder();
+
+            if (_frameHolder[direction, frame].PreviewImage == null)
+            {
+                _frameHolder[direction, frame].PreviewImage = new Bitmap(64, 64);
+            }
+
+            return _frameHolder[direction, frame].PreviewImage;
         }
 
         internal void KeyPressed(KeyPressEventArgs e)

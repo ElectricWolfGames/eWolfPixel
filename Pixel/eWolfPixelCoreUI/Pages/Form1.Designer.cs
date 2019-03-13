@@ -35,6 +35,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._animImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -42,6 +43,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._animImage)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,6 +59,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.splitContainer1.Panel2.Controls.Add(this._animImage);
             this.splitContainer1.Panel2.Controls.Add(this._previewImage);
             this.splitContainer1.Panel2.Controls.Add(this._editImage);
             this.splitContainer1.Size = new System.Drawing.Size(1070, 669);
@@ -77,7 +80,7 @@
             // 
             // _previewImage
             // 
-            this._previewImage.Location = new System.Drawing.Point(451, 341);
+            this._previewImage.Location = new System.Drawing.Point(451, 159);
             this._previewImage.Name = "_previewImage";
             this._previewImage.Size = new System.Drawing.Size(167, 176);
             this._previewImage.TabIndex = 1;
@@ -114,9 +117,17 @@
             // saveProjectToolStripMenuItem
             // 
             this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveProjectToolStripMenuItem.Text = "Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItem_Click);
+            // 
+            // _animImage
+            // 
+            this._animImage.Location = new System.Drawing.Point(451, 341);
+            this._animImage.Name = "_animImage";
+            this._animImage.Size = new System.Drawing.Size(167, 176);
+            this._animImage.TabIndex = 2;
+            this._animImage.TabStop = false;
             // 
             // Form1
             // 
@@ -137,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._animImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +163,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
+        private System.Windows.Forms.PictureBox _animImage;
     }
 }
 

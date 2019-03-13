@@ -13,6 +13,7 @@ namespace eWolfPixelCoreUI
 {
     public partial class Form1 : Form
     {
+        private AnimationPreview _animationPreview;
         private ImageEditor _imageEditor = new ImageEditor();
         private ProjectHolder _projectHolder = new ProjectHolder();
 
@@ -27,13 +28,12 @@ namespace eWolfPixelCoreUI
 
             _imageEditor.EditImage = _editImage;
             _imageEditor.PreviewImage = _previewImage;
+            _animationPreview = new AnimationPreview(_imageEditor, _animImage);
+
+            CreateAnimationTimer();
         }
 
-        private void InitializeServices()
-        {
-            ServiceLocator.Instance.InjectService<IExportImage>(new ExportImages());
-            ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
-        }
+        private Timer TimeInterval { get; set; }
 
         protected void _projectView_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -81,9 +81,25 @@ namespace eWolfPixelCoreUI
             PopulateTree();
         }
 
+        private void CreateAnimationTimer()
+        {
+            TimeInterval = new Timer
+            {
+                Interval = 25
+            };
+            TimeInterval.Start();
+            TimeInterval.Tick += new EventHandler(TimerTick);
+        }
+
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             _imageEditor.KeyPressed(e);
+        }
+
+        private void InitializeServices()
+        {
+            ServiceLocator.Instance.InjectService<IExportImage>(new ExportImages());
+            ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
         }
 
         private void OpenItem(TreeViewEventArgs e)
@@ -152,6 +168,11 @@ namespace eWolfPixelCoreUI
         private void SetEditItem(IEditable item)
         {
             _imageEditor.SetItem(item);
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            _animationPreview.Tick();
         }
     }
 }
