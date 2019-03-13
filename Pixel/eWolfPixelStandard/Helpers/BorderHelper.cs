@@ -16,27 +16,39 @@ namespace eWolfPixelStandard.Helpers
 
         internal static void ApplyBlack(PixelSet pixelSet)
         {
-            for (int x = 0; x < pixelSet.Width - 1; x++)
+            for (int x = 0; x < pixelSet.Width; x++)
             {
-                for (int y = 0; y < pixelSet.Height - 1; y++)
+                for (int y = 0; y < pixelSet.Height; y++)
                 {
                     if (!pixelSet.Pixels[x, y].IsEmpty && !pixelSet.Pixels[x, y].IsBlackout)
                     {
-                        if (pixelSet.Pixels[x + 1, y].IsEmpty)
+                        if (x < pixelSet.Width - 1)
                         {
-                            pixelSet.SetPixel(x + 1, y, Pixel.Black);
+                            if (pixelSet.Pixels[x + 1, y].IsEmpty)
+                            {
+                                pixelSet.SetPixel(x + 1, y, Pixel.Black);
+                            }
                         }
-                        if (pixelSet.Pixels[x - 1, y].IsEmpty)
+                        if (x > 0)
                         {
-                            pixelSet.SetPixel(x - 1, y, Pixel.Black);
+                            if (pixelSet.Pixels[x - 1, y].IsEmpty)
+                            {
+                                pixelSet.SetPixel(x - 1, y, Pixel.Black);
+                            }
                         }
-                        if (pixelSet.Pixels[x, y + 1].IsEmpty)
+                        if (y < pixelSet.Height - 1)
                         {
-                            pixelSet.SetPixel(x, y + 1, Pixel.Black);
+                            if (pixelSet.Pixels[x, y + 1].IsEmpty)
+                            {
+                                pixelSet.SetPixel(x, y + 1, Pixel.Black);
+                            }
                         }
-                        if (pixelSet.Pixels[x, y - 1].IsEmpty)
+                        if (y > 0)
                         {
-                            pixelSet.SetPixel(x, y - 1, Pixel.Black);
+                            if (pixelSet.Pixels[x, y - 1].IsEmpty)
+                            {
+                                pixelSet.SetPixel(x, y - 1, Pixel.Black);
+                            }
                         }
                     }
                 }
