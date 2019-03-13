@@ -61,5 +61,9 @@ namespace eWolfPixelStandard.Items
         }
 
         protected ItemTypes _itemTypes { get; set; }
+
+        public virtual void PostLoadFix()
+        {
+        }
     }
 }

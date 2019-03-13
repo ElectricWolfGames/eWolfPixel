@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace eWolfPixelStandard.Items
+namespace eWolfPixelStandard.Data
 {
     [Serializable]
     public class Pixel

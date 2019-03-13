@@ -1,7 +1,9 @@
 ﻿using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
 using eWolfPixelStandard.Project;
+using eWolfPixelStandard.Services;
 using eWolfPixelUI.ImageEditor;
+using eWolfPixelUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -19,10 +21,18 @@ namespace eWolfPixelCoreUI
             InitializeComponent();
             _projectHolder.LoadProject(@"C:\GitHub\eWolfPixel\Pixel\DummyTestProject\");
 
+            InitializeServices();
+
             PopulateTree();
 
             _imageEditor.EditImage = _editImage;
             _imageEditor.PreviewImage = _previewImage;
+        }
+
+        private void InitializeServices()
+        {
+            ServiceLocator.Instance.InjectService<IExportImage>(new ExportImages());
+            ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
         }
 
         protected void _projectView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -95,6 +105,8 @@ namespace eWolfPixelCoreUI
             {
                 if (item == null)
                     continue;
+
+                item.PostLoadFix();
 
                 if (item.Name == "Walk")
                 {

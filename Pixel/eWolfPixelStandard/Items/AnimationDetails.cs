@@ -3,6 +3,7 @@ using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Options;
 using eWolfPixelStandard.Project;
+using eWolfPixelStandard.Services;
 using System;
 using System.Drawing;
 
@@ -12,7 +13,9 @@ namespace eWolfPixelStandard.Items
     public class AnimationDetails : ItemsBase, IEditable, ISaveable
     {
         private AnimationOptions _animationOptions;
-
+        private int _currentDirection = 0;
+        private int _currentFrame = 0;
+        private PixelSet[,] _pixelAnimations;
         private PixelSet _pixelSet;
 
         public AnimationDetails(string name, string path)
@@ -24,6 +27,14 @@ namespace eWolfPixelStandard.Items
 
         public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
 
+        public Directions8Way Direction
+        {
+            set
+            {
+                _currentDirection = (int)value;
+            }
+        }
+
         public Pixel[,] PixelArray
         {
             get
@@ -34,27 +45,52 @@ namespace eWolfPixelStandard.Items
 
         public PixelSet PixelSet { get => _pixelSet; set => _pixelSet = value; }
 
+        public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
+
+        public override void PostLoadFix()
+        {
+            _itemTypes = ItemTypes.Animation;
+
+            if (_pixelSet == null)
+                _pixelSet = new PixelSet(24, 24);
+
+            if (_pixelAnimations == null)
+            {
+                _pixelAnimations = new PixelSet[8, 4];
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        _pixelAnimations[i, j] = new PixelSet(24, 24);
+                    }
+                }
+            }
+        }
+
         public void Save(string projectPath)
         {
             _itemTypes = ItemTypes.Animation;
             PersistenceHelper<AnimationDetails> ph = new PersistenceHelper<AnimationDetails>(projectPath);
             ph.SaveDataSingle(this);
+
+            ExportImages();
+        }
+
+        private void ExportImages()
+        {
+            IExportImage exportIamge = ServiceLocator.Instance.GetService<IExportImage>();
+            if (exportIamge != null)
+                exportIamge.Export(this, _pixelAnimations);
         }
 
         public void SetColor(int x, int y, Pixel color)
         {
-            if (_pixelSet == null)
-                _pixelSet = new PixelSet(24, 24);
-
             _pixelSet.SetPixel(x, y, color);
             UpdateImage(x, y);
         }
 
         public void SetColor(Point pixelPoint, Pixel color)
         {
-            if (_pixelSet == null)
-                _pixelSet = new PixelSet(24, 24);
-
             _pixelSet.SetPixel(pixelPoint.X, pixelPoint.Y, color);
             UpdateImage(pixelPoint.X, pixelPoint.Y);
         }
