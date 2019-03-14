@@ -25,6 +25,7 @@ namespace eWolfPixelStandard.Items
         }
 
         public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
+
         public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
 
         public int Direction { get => _currentDirection; set => _currentDirection = value; }
@@ -54,6 +55,13 @@ namespace eWolfPixelStandard.Items
         public override void PostLoadFix()
         {
             ItemType = ItemTypes.Animation;
+
+            if (_animationOptions == null)
+            {
+                _animationOptions = new AnimationOptions();
+            }
+
+            _animationOptions.SetParent(this);
 
             if (_animationOptions.Frames == 0)
                 _animationOptions.Frames = 4;
@@ -108,6 +116,20 @@ namespace eWolfPixelStandard.Items
             return item;
         }
 
+        internal void Rebuild()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < _animationOptions.Frames; j++)
+                {
+                    if (_pixelAnimations[i, j] != null)
+                    {
+                        _pixelAnimations[i, j].Rebuild(_animationOptions.FrameWidth, _animationOptions.FrameHeight);
+                    }
+                }
+            }
+        }
+
         private void ExportImages()
         {
             IExportImage exportIamge = ServiceLocator.Instance.GetService<IExportImage>();
@@ -117,9 +139,6 @@ namespace eWolfPixelStandard.Items
 
         private void UpdateImage(int x, int y)
         {
-            if (_animationOptions == null)
-                _animationOptions = new AnimationOptions();
-
             BorderHelper.Apply(_animationOptions.BorderStyle, PixelSetAnim);
         }
     }
