@@ -11,6 +11,11 @@ namespace eWolfPixelStandard.Options
         }
 
         public BorderStyle BorderStyle { get; set; }
-        public int Frames { get; set; }
+
+        public int Frames { get; set; } = 4;
+
+        public int FrameWidth { get; set; } = 20;
+
+        public int FrameHeight { get; set; } = 34;
     }
 }

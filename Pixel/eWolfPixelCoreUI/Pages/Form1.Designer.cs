@@ -31,22 +31,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._projectView = new System.Windows.Forms.TreeView();
+            this._pictureColors = new System.Windows.Forms.PictureBox();
             this._animImage = new System.Windows.Forms.PictureBox();
             this._previewImage = new System.Windows.Forms.PictureBox();
             this._editImage = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._pictureColors = new System.Windows.Forms.PictureBox();
+            this._propertyGrid = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._pictureColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._animImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._pictureColors)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this._propertyGrid);
             this.splitContainer1.Panel1.Controls.Add(this._projectView);
             // 
             // splitContainer1.Panel2
@@ -66,7 +68,7 @@
             this.splitContainer1.Panel2.Controls.Add(this._animImage);
             this.splitContainer1.Panel2.Controls.Add(this._previewImage);
             this.splitContainer1.Panel2.Controls.Add(this._editImage);
-            this.splitContainer1.Panel2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.MouseWheel);
+            this.splitContainer1.Panel2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.EditorMouseWheel);
             this.splitContainer1.Size = new System.Drawing.Size(1070, 669);
             this.splitContainer1.SplitterDistance = 356;
             this.splitContainer1.TabIndex = 0;
@@ -78,10 +80,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._projectView.Location = new System.Drawing.Point(8, 8);
             this._projectView.Name = "_projectView";
-            this._projectView.Size = new System.Drawing.Size(345, 658);
+            this._projectView.Size = new System.Drawing.Size(345, 396);
             this._projectView.TabIndex = 0;
             this._projectView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this._projectView_AfterSelect);
             this._projectView.MouseClick += new System.Windows.Forms.MouseEventHandler(this._projectView_MouseClick);
+            // 
+            // _pictureColors
+            // 
+            this._pictureColors.Image = ((System.Drawing.Image)(resources.GetObject("_pictureColors.Image")));
+            this._pictureColors.Location = new System.Drawing.Point(419, 54);
+            this._pictureColors.Name = "_pictureColors";
+            this._pictureColors.Size = new System.Drawing.Size(246, 120);
+            this._pictureColors.TabIndex = 3;
+            this._pictureColors.TabStop = false;
+            this._pictureColors.Click += new System.EventHandler(this._pictureColors_Click);
+            this._pictureColors.MouseMove += new System.Windows.Forms.MouseEventHandler(this._pictureColors_MouseMove);
             // 
             // _animImage
             // 
@@ -134,16 +147,12 @@
             this.saveProjectToolStripMenuItem.Text = "Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItem_Click);
             // 
-            // _pictureColors
+            // _propertyGrid
             // 
-            this._pictureColors.Image = ((System.Drawing.Image)(resources.GetObject("_pictureColors.Image")));
-            this._pictureColors.Location = new System.Drawing.Point(419, 54);
-            this._pictureColors.Name = "_pictureColors";
-            this._pictureColors.Size = new System.Drawing.Size(246, 120);
-            this._pictureColors.TabIndex = 3;
-            this._pictureColors.TabStop = false;
-            this._pictureColors.Click += new System.EventHandler(this._pictureColors_Click);
-            this._pictureColors.MouseMove += new System.Windows.Forms.MouseEventHandler(this._pictureColors_MouseMove);
+            this._propertyGrid.Location = new System.Drawing.Point(8, 410);
+            this._propertyGrid.Name = "_propertyGrid";
+            this._propertyGrid.Size = new System.Drawing.Size(345, 256);
+            this._propertyGrid.TabIndex = 1;
             // 
             // Form1
             // 
@@ -160,12 +169,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._pictureColors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._animImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._pictureColors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +191,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
         private System.Windows.Forms.PictureBox _animImage;
         private System.Windows.Forms.PictureBox _pictureColors;
+        private System.Windows.Forms.PropertyGrid _propertyGrid;
     }
 }
 

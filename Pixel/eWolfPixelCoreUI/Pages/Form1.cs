@@ -116,7 +116,7 @@ namespace eWolfPixelCoreUI
             ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
         }
 
-        private void MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void EditorMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             int wheelDelta = e.Delta / 120;
             Point localMousePosition = _editImage.PointToClient(Cursor.Position);
@@ -129,7 +129,11 @@ namespace eWolfPixelCoreUI
             if (itemBase.ItemType == ItemTypes.Animation)
             {
                 if (itemBase is IEditable editable)
+                {
                     _imageEditor.SetItem(editable);
+                    AnimationDetails animationDetails = itemBase as AnimationDetails;
+                    _propertyGrid.SelectedObject = animationDetails.AnimationOptions;
+                }
             }
         }
 

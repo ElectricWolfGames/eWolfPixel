@@ -50,6 +50,15 @@ namespace eWolfPixelStandard.Items
         {
             ItemType = ItemTypes.Animation;
 
+            if (_animationOptions.Frames == 0)
+                _animationOptions.Frames = 4;
+
+            if (_animationOptions.FrameWidth == 0)
+                _animationOptions.FrameWidth = 24;
+
+            if (_animationOptions.FrameHeight == 0)
+                _animationOptions.FrameHeight = 24;
+
             if (_pixelAnimations == null)
             {
                 _pixelAnimations = new PixelSet[8, 4];
