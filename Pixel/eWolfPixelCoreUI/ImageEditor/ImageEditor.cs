@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,15 +9,15 @@ namespace eWolfPixelUI.ImageEditor
 {
     public class ImageEditor
     {
+        private const int ImageEditHeight = ImageHeight - 2;
+        private const int ImageEditWidth = ImageWidth - 2;
+        private const int ImageHeight = 500;
         private const int ImageOffSetX = 2;
         private const int ImageOffSetY = 2;
         private const int ImageWidth = 400;
-        private const int ImageHeight = 500;
-        private const int ImageEditWidth = ImageWidth - 2;
-        private const int ImageEditHeight = ImageHeight - 2;
-
         private readonly int _currentDirection = 0;
         private readonly FrameHolder[,] _frameHolder = new FrameHolder[8, 4];
+        private PictureBox _colorImage;
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
         private int _currentFrame;
         private IEditable _itemsBase = null;
@@ -26,6 +27,14 @@ namespace eWolfPixelUI.ImageEditor
 
         public ImageEditor()
         {
+        }
+
+        public PictureBox ColorImage
+        {
+            set
+            {
+                _colorImage = value;
+            }
         }
 
         public PictureBox EditImage
@@ -55,6 +64,14 @@ namespace eWolfPixelUI.ImageEditor
             }
         }
 
+        private bool ShowGridPixels
+        {
+            get
+            {
+                return (_scale > 4);
+            }
+        }
+
         public Point ConvertToPixelPoint(Point localMousePosition)
         {
             Point p = new Point();
@@ -71,6 +88,11 @@ namespace eWolfPixelUI.ImageEditor
             _itemsBase.SetColor(pixelPoint, _currentColor);
             DrawFrame();
             ShowFrame();
+        }
+
+        internal void ClickImageColor(Point localMousePosition)
+        {
+            PickColorFromColorImage(localMousePosition);
         }
 
         internal Image GetFrame(int direction, int frame)
@@ -138,6 +160,15 @@ namespace eWolfPixelUI.ImageEditor
             if (mouseEventArgs.Button == MouseButtons.Left)
             {
                 ClickImage(localMousePosition);
+            }
+        }
+
+        internal void MoveInImageColor(Point localMousePosition, MouseEventArgs mouseEventArgs)
+        {
+            if (mouseEventArgs.Button == MouseButtons.Left
+                || mouseEventArgs.Button == MouseButtons.Right)
+            {
+                PickColorFromColorImage(localMousePosition);
             }
         }
 
@@ -284,18 +315,24 @@ namespace eWolfPixelUI.ImageEditor
             }
         }
 
+        private void PickColorFromColorImage(Point localMousePosition)
+        {
+            Bitmap image = new Bitmap(_colorImage.Image);
+            try
+            {
+                Color col = image.GetPixel(localMousePosition.X, localMousePosition.Y);
+                _currentColor = PixelHelper.Create(col);
+            }
+            catch
+            {
+                // fail safe
+            }
+        }
+
         private void ShowFrame()
         {
             _pictureBox.Image = FrameHolder.Image;
             _picturePreview.Image = FrameHolder.PreviewImage;
-        }
-
-        private bool ShowGridPixels
-        {
-            get
-            {
-                return (_scale > 4);
-            }
         }
     }
 }

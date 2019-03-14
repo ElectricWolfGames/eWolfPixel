@@ -24,6 +24,7 @@ namespace eWolfPixelCoreUI
 
             _imageEditor.EditImage = _editImage;
             _imageEditor.PreviewImage = _previewImage;
+            _imageEditor.ColorImage = _pictureColors;
 
             InitializeServices();
 
@@ -51,6 +52,18 @@ namespace eWolfPixelCoreUI
         {
             Point localMousePosition = _editImage.PointToClient(Cursor.Position);
             _imageEditor.MoveInImage(localMousePosition, mouseEventArgs);
+        }
+
+        private void _pictureColors_Click(object sender, EventArgs e)
+        {
+            Point localMousePosition = _pictureColors.PointToClient(Cursor.Position);
+            _imageEditor.ClickImageColor(localMousePosition);
+        }
+
+        private void _pictureColors_MouseMove(object sender, MouseEventArgs mouseEventArgs)
+        {
+            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
+            _imageEditor.MoveInImageColor(localMousePosition, mouseEventArgs);
         }
 
         private void _projectView_MouseClick(object sender, MouseEventArgs mouseEventArgs)
