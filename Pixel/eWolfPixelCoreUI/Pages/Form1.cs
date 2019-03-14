@@ -16,6 +16,7 @@ namespace eWolfPixelCoreUI
         private AnimationPreview _animationPreview;
         private ImageEditor _imageEditor = new ImageEditor();
         private ProjectHolder _projectHolder = new ProjectHolder();
+        private ItemsBase clickedOnItem = null;
 
         public Form1()
         {
@@ -66,8 +67,22 @@ namespace eWolfPixelCoreUI
             _imageEditor.MoveInImageColor(localMousePosition, mouseEventArgs);
         }
 
-        private void _projectView_MouseClick(object sender, MouseEventArgs mouseEventArgs)
+        private void _projectView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs mouseEventArgs)
         {
+            ItemsBase itemBase = mouseEventArgs.Node.Tag as ItemsBase;
+            if (itemBase == null)
+                return;
+
+            clickedOnItem = itemBase;
+
+            if (itemBase.ItemType == ItemTypes.Animation)
+            {
+                ContextMenu cm = new ContextMenu();
+                cm.MenuItems.Add("Clear All frames", ClearItem);
+
+                _projectView.ContextMenu = cm;
+                return;
+            }
             if (mouseEventArgs.Button == MouseButtons.Right)
             {
                 MenuItem[] itemToAdd = new MenuItem[3];
@@ -95,6 +110,14 @@ namespace eWolfPixelCoreUI
             PopulateTree();
         }
 
+        private void ClearItem(object sender, EventArgs e)
+        {
+            if (clickedOnItem == null)
+                return;
+
+            clickedOnItem.Clear();
+        }
+
         private void CreateAnimationTimer()
         {
             TimeInterval = new Timer
@@ -103,6 +126,13 @@ namespace eWolfPixelCoreUI
             };
             TimeInterval.Start();
             TimeInterval.Tick += new EventHandler(TimerTick);
+        }
+
+        private void EditorMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            int wheelDelta = e.Delta / 120;
+            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
+            _imageEditor.MoveWheelImage(localMousePosition, wheelDelta);
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -114,13 +144,6 @@ namespace eWolfPixelCoreUI
         {
             ServiceLocator.Instance.InjectService<IExportImage>(new ExportImages());
             ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
-        }
-
-        private void EditorMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            int wheelDelta = e.Delta / 120;
-            Point localMousePosition = _editImage.PointToClient(Cursor.Position);
-            _imageEditor.MoveWheelImage(localMousePosition, wheelDelta);
         }
 
         private void OpenItem(TreeViewEventArgs e)

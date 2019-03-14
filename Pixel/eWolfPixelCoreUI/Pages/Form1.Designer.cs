@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._propertyGrid = new System.Windows.Forms.PropertyGrid();
             this._projectView = new System.Windows.Forms.TreeView();
             this._pictureColors = new System.Windows.Forms.PictureBox();
             this._animImage = new System.Windows.Forms.PictureBox();
@@ -38,7 +39,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._propertyGrid = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +73,13 @@
             this.splitContainer1.SplitterDistance = 356;
             this.splitContainer1.TabIndex = 0;
             // 
+            // _propertyGrid
+            // 
+            this._propertyGrid.Location = new System.Drawing.Point(8, 410);
+            this._propertyGrid.Name = "_propertyGrid";
+            this._propertyGrid.Size = new System.Drawing.Size(345, 256);
+            this._propertyGrid.TabIndex = 1;
+            // 
             // _projectView
             // 
             this._projectView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -83,7 +90,7 @@
             this._projectView.Size = new System.Drawing.Size(345, 396);
             this._projectView.TabIndex = 0;
             this._projectView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this._projectView_AfterSelect);
-            this._projectView.MouseClick += new System.Windows.Forms.MouseEventHandler(this._projectView_MouseClick);
+            this._projectView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._projectView_NodeMouseClick);
             // 
             // _pictureColors
             // 
@@ -146,13 +153,6 @@
             this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveProjectToolStripMenuItem.Text = "Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItem_Click);
-            // 
-            // _propertyGrid
-            // 
-            this._propertyGrid.Location = new System.Drawing.Point(8, 410);
-            this._propertyGrid.Name = "_propertyGrid";
-            this._propertyGrid.Size = new System.Drawing.Size(345, 256);
-            this._propertyGrid.TabIndex = 1;
             // 
             // Form1
             // 

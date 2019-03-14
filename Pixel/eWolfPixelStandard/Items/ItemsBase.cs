@@ -47,6 +47,8 @@ namespace eWolfPixelStandard.Items
             }
         }
 
+        public ItemTypes ItemType { get; protected set; }
+
         public string Name
         {
             get
@@ -71,7 +73,9 @@ namespace eWolfPixelStandard.Items
             }
         }
 
-        public ItemTypes ItemType { get; protected set; }
+        public virtual void Clear()
+        {
+        }
 
         public virtual void PostLoadFix()
         {

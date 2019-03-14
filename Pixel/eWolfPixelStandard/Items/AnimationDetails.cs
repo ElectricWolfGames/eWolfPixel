@@ -13,9 +13,9 @@ namespace eWolfPixelStandard.Items
     public class AnimationDetails : ItemsBase, IEditable, ISaveable
     {
         private AnimationOptions _animationOptions;
-        private PixelSet[,] _pixelAnimations;
         private int _currentDirection = 0;
         private int _currentFrame = 0;
+        private PixelSet[,] _pixelAnimations;
 
         public AnimationDetails(string name, string path)
         {
@@ -24,11 +24,10 @@ namespace eWolfPixelStandard.Items
             Path = path;
         }
 
+        public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
         public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
 
         public int Direction { get => _currentDirection; set => _currentDirection = value; }
-
-        public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
 
         public Pixel[,] PixelArray
         {
@@ -44,6 +43,12 @@ namespace eWolfPixelStandard.Items
             {
                 return _pixelAnimations[_currentDirection, _currentFrame];
             }
+        }
+
+        public override void Clear()
+        {
+            _pixelAnimations = null;
+            PostLoadFix();
         }
 
         public override void PostLoadFix()
