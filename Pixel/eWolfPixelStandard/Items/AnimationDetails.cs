@@ -5,7 +5,9 @@ using eWolfPixelStandard.Options;
 using eWolfPixelStandard.Project;
 using eWolfPixelStandard.Services;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace eWolfPixelStandard.Items
 {
@@ -46,10 +48,11 @@ namespace eWolfPixelStandard.Items
             }
         }
 
-        public override void Clear()
+        public override MenuItem[] CreateContextMenu()
         {
-            _pixelAnimations = null;
-            PostLoadFix();
+            List<MenuItem> itemToAdd = new List<MenuItem>();
+            itemToAdd.Add(new MenuItem("Clear All frames", ClearItem));
+            return itemToAdd.ToArray();
         }
 
         public override void PostLoadFix()
@@ -80,6 +83,20 @@ namespace eWolfPixelStandard.Items
                     for (int j = 0; j < 4; j++)
                     {
                         _pixelAnimations[i, j] = new PixelSet(24, 24);
+                    }
+                }
+            }
+        }
+
+        public void Rebuild()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < _animationOptions.Frames; j++)
+                {
+                    if (_pixelAnimations[i, j] != null)
+                    {
+                        _pixelAnimations[i, j].Rebuild(_animationOptions.FrameWidth, _animationOptions.FrameHeight);
                     }
                 }
             }
@@ -116,18 +133,10 @@ namespace eWolfPixelStandard.Items
             return item;
         }
 
-        internal void Rebuild()
+        private void ClearItem(object sender, EventArgs e)
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < _animationOptions.Frames; j++)
-                {
-                    if (_pixelAnimations[i, j] != null)
-                    {
-                        _pixelAnimations[i, j].Rebuild(_animationOptions.FrameWidth, _animationOptions.FrameHeight);
-                    }
-                }
-            }
+            _pixelAnimations = null;
+            PostLoadFix();
         }
 
         private void ExportImages()

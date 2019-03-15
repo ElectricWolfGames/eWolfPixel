@@ -8,7 +8,10 @@ namespace eWolfPixelStandard.Helpers
         public static List<string> GetAllFiles(string projectPath)
         {
             List<string> files = new List<string>();
-            var filesRaw = Directory.GetFiles(projectPath, "*", SearchOption.AllDirectories);
+            string[] filesRaw = Directory.GetFiles(projectPath, "*", SearchOption.AllDirectories);
+            if (filesRaw == null)
+                return files;
+
             foreach (string filename in filesRaw)
             {
                 if (string.IsNullOrWhiteSpace(filename))

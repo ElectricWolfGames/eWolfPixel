@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -41,7 +42,7 @@ namespace eWolfPixelStandard.Project
 
         public void CreateCharacter(string name, string path)
         {
-            Items.Add(new FolderDetails(name, path));
+            Items.Add(new CharacterDetails(name, path));
 
             path = path.Replace("\\Root", string.Empty);
             string dir = Path.Combine(_projectPath, path, name);
@@ -72,6 +73,19 @@ namespace eWolfPixelStandard.Project
 
         private ItemsBase LoadItem(ItemTypes itemType, string file)
         {
+            if (AnyAnimsInFolder(file))
+            {
+                string name = Path.GetFileName(file);
+                string path = file.Replace(_projectPath, string.Empty);
+                path = path.Replace(name, string.Empty);
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    path = "\\Root";
+                }
+
+                return new CharacterDetails(name, path);
+            }
+
             if (itemType == ItemTypes.Folder)
             {
                 string name = Path.GetFileName(file);
@@ -91,6 +105,22 @@ namespace eWolfPixelStandard.Project
             }
 
             return null;
+        }
+
+        private bool AnyAnimsInFolder(string filepath)
+        {
+            if (Path.HasExtension(filepath))
+                return false;
+
+            List<string> files = FileHelper.GetAllFiles(filepath);
+            foreach (string file in files)
+            {
+                if (Path.GetExtension(file).ToUpper() == ".ANIM")
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void SaveProject()

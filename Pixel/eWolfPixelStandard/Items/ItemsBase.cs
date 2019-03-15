@@ -1,7 +1,7 @@
-﻿using eWolfPixelStandard.Data;
-using eWolfPixelStandard.Helpers;
+﻿using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Project;
 using System;
+using System.Windows.Forms;
 
 namespace eWolfPixelStandard.Items
 {
@@ -43,7 +43,7 @@ namespace eWolfPixelStandard.Items
         {
             get
             {
-                return ItemType == ItemTypes.Folder;
+                return ItemType == ItemTypes.Folder || ItemType == ItemTypes.Character;
             }
         }
 
@@ -75,6 +75,11 @@ namespace eWolfPixelStandard.Items
 
         public virtual void Clear()
         {
+        }
+
+        public virtual MenuItem[] CreateContextMenu()
+        {
+            return new MenuItem[0];
         }
 
         public virtual void PostLoadFix()

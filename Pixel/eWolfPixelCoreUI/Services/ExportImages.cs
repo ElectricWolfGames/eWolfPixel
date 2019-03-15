@@ -13,8 +13,10 @@ namespace eWolfPixelUI.Services
     {
         public void Export(ItemsBase itemBase, PixelSet[,] pixelArray)
         {
-            ISaveable saveable = itemBase as ISaveable;
+            if (pixelArray == null)
+                return;
 
+            ISaveable saveable = itemBase as ISaveable;
             ProjectHolder ph = ServiceLocator.Instance.GetService<ProjectHolder>();
 
             string outputFileName = Path.Combine(ph.ProjectPath, saveable.GetFileName);
