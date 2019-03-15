@@ -89,5 +89,16 @@ namespace eWolfPixelStandard.Data
                 }
             }
         }
+
+        internal Pixel GetPixel(int x, int y)
+        {
+            if (x < 0 || y < 0)
+                return Pixel.White;
+
+            if (x >= Width || y >= Height)
+                return Pixel.White;
+
+            return _pixel[x, y];
+        }
     }
 }

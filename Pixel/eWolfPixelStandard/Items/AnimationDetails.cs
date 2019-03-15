@@ -54,6 +54,11 @@ namespace eWolfPixelStandard.Items
             return itemToAdd.ToArray();
         }
 
+        public Pixel GetColor(Point pixelPoint)
+        {
+            return PixelSetAnim.GetPixel(pixelPoint.X, pixelPoint.Y);
+        }
+
         public override void PostLoadFix()
         {
             _currentFrame = 0;

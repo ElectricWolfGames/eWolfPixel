@@ -1,5 +1,4 @@
 ﻿using eWolfPixelStandard.Interfaces;
-using System;
 using System.Drawing;
 
 namespace eWolfPixelUI.ImageEditor

@@ -39,6 +39,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._ColorPreviewPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,6 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._previewImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._ColorPreviewPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,6 +66,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.splitContainer1.Panel2.Controls.Add(this._ColorPreviewPictureBox);
             this.splitContainer1.Panel2.Controls.Add(this._pictureColors);
             this.splitContainer1.Panel2.Controls.Add(this._animImage);
             this.splitContainer1.Panel2.Controls.Add(this._previewImage);
@@ -126,7 +129,7 @@
             this._editImage.Size = new System.Drawing.Size(400, 500);
             this._editImage.TabIndex = 0;
             this._editImage.TabStop = false;
-            this._editImage.Click += new System.EventHandler(this._editImage_Click);
+            this._editImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this._editImage_Click);
             this._editImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this._editImage_MouseMove);
             // 
             // menuStrip1
@@ -154,6 +157,14 @@
             this.saveProjectToolStripMenuItem.Text = "Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItem_Click);
             // 
+            // _ColorPreviewPictureBox
+            // 
+            this._ColorPreviewPictureBox.Location = new System.Drawing.Point(13, 8);
+            this._ColorPreviewPictureBox.Name = "_ColorPreviewPictureBox";
+            this._ColorPreviewPictureBox.Size = new System.Drawing.Size(432, 41);
+            this._ColorPreviewPictureBox.TabIndex = 4;
+            this._ColorPreviewPictureBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._editImage)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._ColorPreviewPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,6 +204,7 @@
         private System.Windows.Forms.PictureBox _animImage;
         private System.Windows.Forms.PictureBox _pictureColors;
         private System.Windows.Forms.PropertyGrid _propertyGrid;
+        private System.Windows.Forms.PictureBox _ColorPreviewPictureBox;
     }
 }
 

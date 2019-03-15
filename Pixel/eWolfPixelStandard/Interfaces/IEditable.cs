@@ -11,6 +11,8 @@ namespace eWolfPixelStandard.Interfaces
 
         void SetColor(Point pixelPoint, Pixel color);
 
+        Pixel GetColor(Point pixelPoint);
+
         int CurrentFrame { get; set; }
 
         int Direction { get; set; }

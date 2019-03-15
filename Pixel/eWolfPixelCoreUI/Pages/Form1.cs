@@ -16,7 +16,8 @@ namespace eWolfPixelCoreUI
         private AnimationPreview _animationPreview;
         private ImageEditor _imageEditor = new ImageEditor();
         private ProjectHolder _projectHolder = new ProjectHolder();
-        private ItemsBase clickedOnItem = null;
+        private ItemsBase _selectedItem;
+        private ItemsBase _clickedOnItem = null;
 
         public Form1()
         {
@@ -26,6 +27,7 @@ namespace eWolfPixelCoreUI
             _imageEditor.EditImage = _editImage;
             _imageEditor.PreviewImage = _previewImage;
             _imageEditor.ColorImage = _pictureColors;
+            _imageEditor.ColorPreviewImage = _ColorPreviewPictureBox;
 
             InitializeServices();
 
@@ -90,10 +92,10 @@ namespace eWolfPixelCoreUI
             OpenItem(e);
         }
 
-        private void _editImage_Click(object sender, EventArgs e)
+        private void _editImage_Click(object sender, MouseEventArgs e)
         {
             Point localMousePosition = _editImage.PointToClient(Cursor.Position);
-            _imageEditor.ClickImage(localMousePosition);
+            _imageEditor.ClickImage(localMousePosition, e.Button);
         }
 
         private void _editImage_MouseMove(object sender, MouseEventArgs mouseEventArgs)
@@ -120,7 +122,7 @@ namespace eWolfPixelCoreUI
             if (itemBase == null)
                 return;
 
-            clickedOnItem = itemBase;
+            _clickedOnItem = itemBase;
 
             if (itemBase.ItemType == ItemTypes.Animation)
             {
@@ -191,8 +193,6 @@ namespace eWolfPixelCoreUI
         {
             _imageEditor.SetItem(item);
         }
-
-        private ItemsBase _selectedItem;
 
         private void TimerTick(object sender, EventArgs e)
         {

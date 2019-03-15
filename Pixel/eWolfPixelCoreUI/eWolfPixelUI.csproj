@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageEditor\AnimationPreview.cs" />
+    <Compile Include="ImageEditor\ColorSelection.cs" />
     <Compile Include="ImageEditor\FrameHolder.cs" />
     <Compile Include="Services\ExportImages.cs" />
     <Compile Include="Helpers\PixelHelper.cs" />
