@@ -1,5 +1,6 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Interfaces;
+using eWolfPixelStandard.Items;
 using eWolfPixelUI.Helpers;
 using System;
 using System.Drawing;
@@ -50,7 +51,9 @@ namespace eWolfPixelUI.ImageEditor
             get
             {
                 if (_frameHolder[_currentDirection, _currentFrame] == null)
-                    _frameHolder[_currentDirection, _currentFrame] = new FrameHolder();
+                {
+                    _frameHolder[_currentDirection, _currentFrame] = new FrameHolder(_itemsBase.FrameSize);
+                }
 
                 return _frameHolder[_currentDirection, _currentFrame];
             }
@@ -99,7 +102,7 @@ namespace eWolfPixelUI.ImageEditor
         {
             if (_frameHolder[direction, frame] == null)
             {
-                _frameHolder[direction, frame] = new FrameHolder();
+                _frameHolder[direction, frame] = new FrameHolder(_itemsBase.FrameSize);
             }
 
             if (_frameHolder[direction, frame].PreviewImage == null)
@@ -193,6 +196,15 @@ namespace eWolfPixelUI.ImageEditor
 
         private void CheckItem()
         {
+            if (_frameHolder[_currentDirection, _currentFrame] != null)
+            {
+                _frameHolder[_currentDirection, _currentFrame].Check(_itemsBase.FrameSize);
+            }
+            else
+            {
+                _frameHolder[_currentDirection, _currentFrame] = new FrameHolder(_itemsBase.FrameSize);
+            }
+
             if (FrameHolder.Image == null)
             {
                 FrameHolder.Image = CreateDefaultImage(ImageWidth, ImageHeight);
@@ -234,13 +246,13 @@ namespace eWolfPixelUI.ImageEditor
 
             if (ShowGridPixels)
             {
-                for (int x = 0; x < 24 * _scale; x += _scale)
+                for (int x = 0; x < width * _scale; x += _scale)
                 {
                     int mainX = x + ImageOffSetX;
                     if (mainX >= ImageEditWidth)
                         continue;
 
-                    for (int y = 0; y < 24 * _scale; y++)
+                    for (int y = 0; y < height * _scale; y++)
                     {
                         int mainY = y + ImageOffSetY;
                         if (mainY >= ImageEditHeight)
@@ -250,13 +262,13 @@ namespace eWolfPixelUI.ImageEditor
                     }
                 }
 
-                for (int y = 0; y < 24 * _scale; y += _scale)
+                for (int y = 0; y < height * _scale; y += _scale)
                 {
                     int mainY = y + ImageOffSetY;
                     if (mainY >= ImageEditHeight)
                         continue;
 
-                    for (int x = 0; x < 24 * _scale; x++)
+                    for (int x = 0; x < width * _scale; x++)
                     {
                         int mainX = x + ImageOffSetX;
                         if (mainX >= ImageEditWidth)
@@ -274,10 +286,9 @@ namespace eWolfPixelUI.ImageEditor
             CheckItem();
 
             Pixel[,] pixels = _itemsBase.PixelArray;
-
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < _itemsBase.FrameSize.FrameWidth; i++)
             {
-                for (int j = 0; j < 24; j++)
+                for (int j = 0; j < _itemsBase.FrameSize.FrameHeight; j++)
                 {
                     Color col = PixelHelper.PixelColor(pixels[i, j]);
 

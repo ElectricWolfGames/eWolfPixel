@@ -1,12 +1,22 @@
-﻿using System.Drawing;
+﻿using eWolfPixelStandard.Interfaces;
+using System;
+using System.Drawing;
 
 namespace eWolfPixelUI.ImageEditor
 {
     public class FrameHolder
     {
         private Color[,] _color;
+        private int _frameHeight;
+        private int _frameWidth;
         private Bitmap _image;
         private Bitmap _previewImage;
+
+        public FrameHolder(IFrameSize frameSize)
+        {
+            _frameWidth = frameSize.FrameWidth;
+            _frameHeight = frameSize.FrameHeight;
+        }
 
         public Color[,] Color
         {
@@ -14,7 +24,7 @@ namespace eWolfPixelUI.ImageEditor
             {
                 if (_color == null)
                 {
-                    _color = new Color[24, 24];
+                    _color = new Color[_frameWidth, _frameHeight];
                 }
                 return _color;
             }
@@ -46,6 +56,22 @@ namespace eWolfPixelUI.ImageEditor
             {
                 _previewImage = value;
             }
+        }
+
+        internal void Check(IFrameSize frameSize)
+        {
+            if (_frameWidth == frameSize.FrameWidth
+                && _frameHeight == frameSize.FrameHeight)
+            {
+                return;
+            }
+
+            _frameWidth = frameSize.FrameWidth;
+            _frameHeight = frameSize.FrameHeight;
+
+            _color = new Color[_frameWidth, _frameHeight];
+            Image = null;
+            PreviewImage = null;
         }
     }
 }

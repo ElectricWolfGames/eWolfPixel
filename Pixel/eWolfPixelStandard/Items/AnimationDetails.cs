@@ -27,10 +27,9 @@ namespace eWolfPixelStandard.Items
         }
 
         public AnimationOptions AnimationOptions { get => _animationOptions; set => _animationOptions = value; }
-
         public int CurrentFrame { get => _currentFrame; set => _currentFrame = value; }
-
         public int Direction { get => _currentDirection; set => _currentDirection = value; }
+        public IFrameSize FrameSize { get => _animationOptions; }
 
         public Pixel[,] PixelArray
         {
@@ -82,9 +81,13 @@ namespace eWolfPixelStandard.Items
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        _pixelAnimations[i, j] = new PixelSet(24, 24);
+                        _pixelAnimations[i, j] = new PixelSet(_animationOptions.FrameWidth, _animationOptions.FrameHeight);
                     }
                 }
+            }
+            else
+            {
+                Rebuild();
             }
         }
 

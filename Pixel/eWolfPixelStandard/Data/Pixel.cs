@@ -61,5 +61,10 @@ namespace eWolfPixelStandard.Data
 
             return true;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

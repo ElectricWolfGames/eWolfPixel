@@ -1,10 +1,11 @@
 ﻿using System;
+using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
 
 namespace eWolfPixelStandard.Options
 {
     [Serializable]
-    public class AnimationOptions
+    public class AnimationOptions : IFrameSize
     {
         private AnimationDetails _animationDetails;
         private int _frameHeight = 32;

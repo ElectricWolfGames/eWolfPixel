@@ -14,5 +14,7 @@ namespace eWolfPixelStandard.Interfaces
         int CurrentFrame { get; set; }
 
         int Direction { get; set; }
+
+        IFrameSize FrameSize { get; }
     }
 }
