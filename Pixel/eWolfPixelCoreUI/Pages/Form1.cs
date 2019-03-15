@@ -170,6 +170,7 @@ namespace eWolfPixelCoreUI
         private void OpenItem(TreeViewEventArgs e)
         {
             ItemsBase itemBase = e.Node.Tag as ItemsBase;
+            _selectedItem = itemBase;
             if (itemBase.ItemType == ItemTypes.Animation)
             {
                 if (itemBase is IEditable editable)
@@ -191,9 +192,17 @@ namespace eWolfPixelCoreUI
             _imageEditor.SetItem(item);
         }
 
+        private ItemsBase _selectedItem;
+
         private void TimerTick(object sender, EventArgs e)
         {
             _animationPreview.Tick();
+            try
+            {
+                string name = _selectedItem.Name + " " + ((IEditable)_selectedItem).CurrentFrame;
+                this.Text = name;
+            }
+            catch { }
         }
     }
 }

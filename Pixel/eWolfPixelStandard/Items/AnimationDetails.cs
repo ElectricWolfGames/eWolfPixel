@@ -56,6 +56,7 @@ namespace eWolfPixelStandard.Items
 
         public override void PostLoadFix()
         {
+            _currentFrame = 0;
             ItemType = ItemTypes.Animation;
 
             if (_animationOptions == null)

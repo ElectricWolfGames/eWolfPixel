@@ -20,7 +20,7 @@ namespace eWolfPixelUI.ImageEditor
         private readonly FrameHolder[,] _frameHolder = new FrameHolder[8, 4];
         private PictureBox _colorImage;
         private Pixel _currentColor = new Pixel(255, 255, 0, 0);
-        private int _currentFrame;
+        private int _currentFrame = 0;
         private IEditable _itemsBase = null;
         private PictureBox _pictureBox;
         private PictureBox _picturePreview;
