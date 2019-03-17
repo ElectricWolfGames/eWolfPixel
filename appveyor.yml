@@ -15,5 +15,5 @@ build:
   verbosity: minimal
 
   test_script:
-  - cmd: dotnet test
-  - cmd: dotnet test "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\eWolfPixelStandard.UnitTests.csproj" --no-build --logger:Appveyor
+  nunit3-console "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\eWolfPixelStandard.UnitTests.csproj" --result=myresults.xml;format=AppVeyor
+
