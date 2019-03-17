@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{32134371-D3F4-4FAB-8E9D-94087E011BA2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pixel", "Pixel", "{F1488A42-3DE3-4DCF-8A95-B209266943A6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWolfCommon", "..\eWolfApps\Common\eWolfCommon\eWolfCommon.csproj", "{CC18854B-C71D-4116-B1DF-E01F90E11D37}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfCommonUnitTests", "..\eWolfApps\Common\eWolfCommonUnitTests\eWolfCommonUnitTests.csproj", "{5FA2656A-3A9F-43F2-8A5A-A336C2693B80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWolfPixelUI", "Pixel\eWolfPixelCoreUI\eWolfPixelUI.csproj", "{A5471D05-7A1B-4D68-A7E3-8389168AB62F}"
 EndProject
@@ -27,14 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CC18854B-C71D-4116-B1DF-E01F90E11D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC18854B-C71D-4116-B1DF-E01F90E11D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC18854B-C71D-4116-B1DF-E01F90E11D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC18854B-C71D-4116-B1DF-E01F90E11D37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FA2656A-3A9F-43F2-8A5A-A336C2693B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FA2656A-3A9F-43F2-8A5A-A336C2693B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FA2656A-3A9F-43F2-8A5A-A336C2693B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FA2656A-3A9F-43F2-8A5A-A336C2693B80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5471D05-7A1B-4D68-A7E3-8389168AB62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5471D05-7A1B-4D68-A7E3-8389168AB62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5471D05-7A1B-4D68-A7E3-8389168AB62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,8 +46,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CC18854B-C71D-4116-B1DF-E01F90E11D37} = {32134371-D3F4-4FAB-8E9D-94087E011BA2}
-		{5FA2656A-3A9F-43F2-8A5A-A336C2693B80} = {32134371-D3F4-4FAB-8E9D-94087E011BA2}
 		{A5471D05-7A1B-4D68-A7E3-8389168AB62F} = {F1488A42-3DE3-4DCF-8A95-B209266943A6}
 		{BC1FE37D-C631-451D-A005-456F1C76DE01} = {F1488A42-3DE3-4DCF-8A95-B209266943A6}
 		{D92C976C-761F-4C17-AEC8-9FF7B93455CB} = {F1488A42-3DE3-4DCF-8A95-B209266943A6}

@@ -88,10 +88,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\eWolfApps\Common\eWolfCommon\eWolfCommon.csproj">
-      <Project>{cc18854b-c71d-4116-b1df-e01f90e11d37}</Project>
-      <Name>eWolfCommon</Name>
-    </ProjectReference>
     <ProjectReference Include="..\eWolfPixelStandard\eWolfPixelStandard.csproj">
       <Project>{bc1fe37d-c631-451d-a005-456f1c76de01}</Project>
       <Name>eWolfPixelStandard</Name>
