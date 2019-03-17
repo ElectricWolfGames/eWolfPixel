@@ -14,5 +14,5 @@ build:
   include_nuget_references: false
   verbosity: minimal
 
-  test_script:
+test_script:
 - nunit3-console "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\bin\Debug\netcoreapp2.1\eWolfPixelStandard.UnitTests.dll" --result=myresults.xml;format=AppVeyor
