@@ -15,4 +15,4 @@ build:
   verbosity: minimal
 
   test_script:
-  nunit3-console "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\eWolfPixelStandard.UnitTests.csproj" --result=myresults.xml;format=AppVeyor
+   - nunit3-console "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\eWolfPixelStandard.UnitTests.csproj" --result=myresults.xml;format=AppVeyor
