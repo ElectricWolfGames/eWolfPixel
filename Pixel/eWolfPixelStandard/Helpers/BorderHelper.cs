@@ -1,5 +1,4 @@
 ﻿using eWolfPixelStandard.Data;
-using eWolfPixelStandard.Items;
 using eWolfPixelStandard.Options;
 
 namespace eWolfPixelStandard.Helpers

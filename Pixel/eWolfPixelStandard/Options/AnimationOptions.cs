@@ -1,6 +1,6 @@
-﻿using System;
-using eWolfPixelStandard.Interfaces;
+﻿using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
+using System;
 
 namespace eWolfPixelStandard.Options
 {

@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -325,9 +326,11 @@ namespace eWolfPixelUI.ImageEditor
                 Color col = image.GetPixel(localMousePosition.X, localMousePosition.Y);
                 _colorSelection.CurrentColor = PixelHelper.Create(col);
             }
-            catch
+            catch (Exception ex)
             {
                 // fail safe
+                int i = 0;
+                i++; ;
             }
         }
 

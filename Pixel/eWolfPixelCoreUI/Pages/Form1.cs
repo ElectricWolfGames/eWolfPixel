@@ -113,7 +113,7 @@ namespace eWolfPixelCoreUI
         private void _pictureColors_MouseMove(object sender, MouseEventArgs mouseEventArgs)
         {
             Point localMousePosition = _editImage.PointToClient(Cursor.Position);
-            _imageEditor.MoveInImageColor(localMousePosition, mouseEventArgs);
+            _imageEditor.ClickImageColor(localMousePosition);
         }
 
         private void _projectView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs mouseEventArgs)

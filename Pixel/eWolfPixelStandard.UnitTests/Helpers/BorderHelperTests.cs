@@ -1,6 +1,5 @@
 ﻿using eWolfPixelStandard.Data;
 using eWolfPixelStandard.Helpers;
-using eWolfPixelStandard.Items;
 using FluentAssertions;
 using NUnit.Framework;
 

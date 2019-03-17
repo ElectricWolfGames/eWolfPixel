@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TestingData\Player04.png" />
+    <None Remove="TestingData\Player04.png.meta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TestingData\Player04.png" />
+    <EmbeddedResource Include="TestingData\Player04.png.meta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="nunit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eWolfUnity3DParser\eWolfUnity3DParser.csproj" />
+  </ItemGroup>
+
+</Project>

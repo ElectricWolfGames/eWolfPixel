@@ -1,5 +1,4 @@
-﻿using eWolfPixelStandard.Items;
-using System;
+﻿using System;
 
 namespace eWolfPixelStandard.Data
 {

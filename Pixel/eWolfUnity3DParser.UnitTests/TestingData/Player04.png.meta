@@ -1,0 +1,1478 @@
+fileFormatVersion: 2
+guid: 9a3cf21915996f441b213e88de546e32
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PL04_Left_Walk0
+    21300002: PL04_Left_Walk1
+    21300004: PL04_Left_Walk2
+    21300006: Player04_3
+    21300008: Player04_4
+    21300010: PL04_DownLeft_Walk0
+    21300012: PL04_DownLeft_Walk1
+    21300014: PL04_DownLeft_Walk2
+    21300016: PL04_Down_Walk0
+    21300018: PL04_Down_Walk1
+    21300020: PL04_Down_Walk2
+    21300022: PL04_DownRight_Walk0
+    21300024: PL04_DownRight_Walk1
+    21300026: PL04_DownRight_Walk2
+    21300028: PL04_Right_Walk0
+    21300030: PL04_Right_Walk1
+    21300032: PL04_Right_Walk2
+    21300034: PL04_UpRight_Walk0
+    21300036: PL04_UpRight_Walk1
+    21300038: PL04_UpRight_Walk2
+    21300040: PL04_Up_Walk0
+    21300042: PL04_Up_Walk1
+    21300044: PL04_Up_Walk2
+    21300046: PL04_UpLeft_Walk0
+    21300048: PL04_UpLeft_Walk1
+    21300050: PL04_UpLeft_Walk2
+    21300052: PL04_Right_AttackWait
+    21300054: PL04_Right_AttackStab1
+    21300056: PL04_Right_AttackStab2
+    21300058: PL04_Right_AttackSwipe1
+    21300060: PL04_Right_AttackSwipe2
+    21300062: PL04_Left_ATTWait
+    21300064: PL04_Left_ATTStab1
+    21300066: PL04_Left_ATTStab2
+    21300068: PL04_Left_ATTSwipe1
+    21300070: PL04_Left_ATTSwipe2
+    21300072: PL04_DownLeft_ATTWait
+    21300074: PL04_DownLeft_ATTStab1
+    21300076: PL04_DownLeft_ATTStab2
+    21300078: PL04_DownLeft_ATTSwipe1
+    21300080: PL04_DownLeft_ATTSwipe2
+    21300082: PL04_DownRight_ATTWait
+    21300084: PL04_DownRight_ATTStab1
+    21300086: PL04_DownRight_ATTStab2
+    21300088: PL04_DownRight_ATTSwipe1
+    21300090: PL04_DownRight_ATTSwipe2
+    21300092: PL04_UpRight_ATTWait
+    21300094: PL04_UpRight_ATTStab1
+    21300096: PL04_UpRight_ATTStab2
+    21300098: PL04_UpRight_ATTSwipe1
+    21300100: PL04_UpRight_ATTSwipe2
+    21300102: PL04_UpLeft_ATTWait
+    21300104: PL04_UpLeft_ATTStab1
+    21300106: PL04_UpLeft_ATTStab2
+    21300108: PL04_UpLeft_ATTSwipe1
+    21300110: PL04_UpLeft_ATTSwipe2
+    21300112: PL04_Down_ATTWait
+    21300114: PL04_Down_ATTStab1
+    21300116: PL04_Down_ATTStab2
+    21300118: PL04_Down_ATTSwipe1
+    21300120: PL04_Down_ATTSwipe2
+    21300122: PL04_Up_ATTWait
+    21300124: PL04_Up_ATTStab1
+    21300126: PL04_Up_ATTStab2
+    21300128: PL04_Up_ATTSwipe1
+    21300130: PL04_Up_ATTSwipe2
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PL04_Left_Walk0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 473
+        width: 10
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9a5b012f5af2747902bba879ef1838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_Walk1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 473
+        width: 11
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82acc9627bf531e4e9b66b951e279a85
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_Walk2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 473
+        width: 11
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3e38975236dd248a70a038c492017c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_Walk0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 432
+        width: 18
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5980903c5f4014c9c7e57b4ed01395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_Walk1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 434
+        width: 21
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9fd3c4267bc434bb084c59f5b24985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_Walk2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 432
+        width: 16
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86cf4519a2119914c9c9d120ad8e985d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_Walk0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 391
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7826cb7afdd2647bf421b198d65e05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_Walk1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 391
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2755c71350173241882c8d9dbb5bf9c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_Walk2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 391
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1945dce81b7dd544c982490edbc0817d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_Walk0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 348
+        width: 18
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf28960596ad00441abf14f64cfa4ac2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_Walk1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 347
+        width: 16
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7920455a03d173b4fb55e16b4203683c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_Walk2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 349
+        width: 21
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c58cadd8e10304cb3039090199f716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_Walk0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 308
+        width: 11
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfac0ff1fb93984d9670c4e02ca8eea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_Walk1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 308
+        width: 11
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487733660f4a24c4cb5b12f8f181bbf0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_Walk2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 308
+        width: 10
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e98853e4b8c81b4a88f813e6b7a2370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_Walk0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 265
+        width: 17
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65b00cd120645ae4f9bcb8020ae5402c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_Walk1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 266
+        width: 16
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57bc33482489e54ebc016ef7c82eec1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_Walk2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 263
+        width: 19
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1548d9fa66692344ca79c4ce6f5e2d3b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_Walk0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 225
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb5ee86d48d3bf49b1b6f18dadf59f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_Walk1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 224
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57cab9c6d4605448800e611477f5326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_Walk2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 224
+        width: 21
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27531b6f3c2bc64baa7c7dc5be6e18e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_Walk0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 182
+        width: 16
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1732c5e97eb8cef4a94893a6b1ff07e5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_Walk1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 182
+        width: 17
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4dcc02c7c6cb94b880633edb785fde
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_Walk2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 182
+        width: 19
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328dc65bb68c9fa479d6bb28a41c3c08
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_AttackWait
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 309
+        width: 19
+        height: 34
+      alignment: 9
+      pivot: {x: 0.21442935, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97cb1f5c9b39bcc48aa37fe003fa0411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_AttackStab1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 309
+        width: 18
+        height: 34
+      alignment: 9
+      pivot: {x: 0.27966902, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82c2c7608acf72f46a7c411996cec8a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_AttackStab2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 309
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.12760782, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46f29010d3586544b08e8b59c810a4b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_AttackSwipe1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 308
+        width: 21
+        height: 34
+      alignment: 9
+      pivot: {x: 0.1963501, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3d4b2c41c478e4b9fe9960792c6564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Right_AttackSwipe2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 308
+        width: 24
+        height: 34
+      alignment: 9
+      pivot: {x: 0.17105801, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac057168cc7dcc488bfee12f2708a83
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 473
+        width: 19
+        height: 34
+      alignment: 9
+      pivot: {x: 0.79375416, y: -0.0065415325}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9902a48f6e7bd2448d9a18a2f676040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 473
+        width: 18
+        height: 34
+      alignment: 9
+      pivot: {x: 0.7701886, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2b16c0ed02570488a416125650a133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 473
+        width: 32
+        height: 34
+      alignment: 9
+      pivot: {x: 0.8818064, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5b684901fdac04c80fff9952eaab2f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 473
+        width: 21
+        height: 34
+      alignment: 9
+      pivot: {x: 0.8276164, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368173e5a99f1094db1ebb4c8c398106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Left_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 473
+        width: 24
+        height: 34
+      alignment: 9
+      pivot: {x: 0.8558585, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c9fa83cb699554db4855d9ab426170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 431
+        width: 17
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5132002, y: 0.0013334486}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546ab3abe7aacd940a274f1bf1a2231d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 431
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.67951995, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2790e7815a9812c46bef0b050cd043c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 431
+        width: 30
+        height: 36
+      alignment: 9
+      pivot: {x: 0.71318, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478343ee9209cdf4d9232a6a56808982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 432
+        width: 23
+        height: 36
+      alignment: 9
+      pivot: {x: 0.64146954, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a358f9531f7322f4881de90b59bd397d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownLeft_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 432
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.6660559, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c443b1b657516643b86db4439ef482c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 348
+        width: 17
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49238452, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c88085c481465945b8e607cacb957da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 348
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.3291095, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7924c788adfcfdf4c9887bd5657cc705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 348
+        width: 30
+        height: 36
+      alignment: 9
+      pivot: {x: 0.284229, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b1a5c807359894497891a815201f10
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 348
+        width: 23
+        height: 36
+      alignment: 9
+      pivot: {x: 0.3705378, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9999bd7ba00f729428596ef9080d98d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_DownRight_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 348
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.3498236, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bcdc1b6496fe404ea42c7b62405574f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 263
+        width: 19
+        height: 37
+      alignment: 9
+      pivot: {x: 0.43489355, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb438d4b96d4084bb1c771795f546c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 263
+        width: 17
+        height: 37
+      alignment: 9
+      pivot: {x: 0.34719086, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 449fc00c7f4c01245b9ebda053556dbe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 263
+        width: 18
+        height: 37
+      alignment: 9
+      pivot: {x: 0.3488083, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b7c712741d0d341b9029983fec2091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 263
+        width: 17
+        height: 37
+      alignment: 9
+      pivot: {x: 0.39812693, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7f98346740ed348b413fd2f10411ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpRight_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 263
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.33693764, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680d91f943ebc3d48bcaac638d5b9694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 182
+        width: 19
+        height: 37
+      alignment: 9
+      pivot: {x: 0.57012016, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccb1906290e0f747a5b6afaf4131ccb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 182
+        width: 17
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6496151, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf9f06081e744a4885dec3022bd06f0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 182
+        width: 18
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6480315, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af022077fc6168e4b98f3a97bb57162c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 182
+        width: 17
+        height: 37
+      alignment: 9
+      pivot: {x: 0.6282411, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e951bf6be1f232348bd6cc1714de257b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_UpLeft_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 182
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.72021276, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a150ece236c26da4ab36a408da91e2d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 392
+        width: 21
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3bab43e89b64b44a9d67d848287a74
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 392
+        width: 21
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2273c9c868728cf449dde9435b7a7b94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 392
+        width: 20
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4089bdce918091c4283c2227c67b2c0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 392
+        width: 21
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f1ea4ee39bacb499b976ee7a5f3a7f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Down_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 392
+        width: 20
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5092751, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef32147d505f94c488c2f7d8626256ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_ATTWait
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 224
+        width: 20
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26fe08d39eeb554186ec794a3234c76
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_ATTStab1
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 224
+        width: 20
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdea397a56cd5604fb94cb46cfa1bd39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_ATTStab2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 224
+        width: 19
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386ac1a6979d90344a91c7d5c579a917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_ATTSwipe1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 224
+        width: 20
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375252e5a7bfe824f9d5ee1842b1931f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PL04_Up_ATTSwipe2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 224
+        width: 19
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f8ff5535733db14e8218e3f398a3a30
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: cd8b87b1d25426b4c8f0d6ca510938e1
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

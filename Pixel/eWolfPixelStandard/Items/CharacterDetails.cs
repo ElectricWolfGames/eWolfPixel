@@ -23,10 +23,23 @@ namespace eWolfPixelStandard.Items
             {
                 new MenuItem("Character", AddCharacter),
                 new MenuItem("Animation", AddAnimation),
-                new MenuItem("Sprite")
+                new MenuItem("Sprite"),
             };
 
-            return new MenuItem[1] { new MenuItem("Add", itemToAdd.ToArray()) };
+            List<MenuItem> inportOptions = new List<MenuItem>
+            {
+                new MenuItem("InportFromUnity", InportFromUnity)
+            };
+
+            return new MenuItem[2] {
+                new MenuItem("Add", itemToAdd.ToArray()),
+                new MenuItem("Inport", inportOptions .ToArray())
+            };
+        }
+
+        private void InportFromUnity(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void AddAnimation(object sender, EventArgs e)

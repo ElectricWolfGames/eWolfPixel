@@ -1,5 +1,4 @@
 ﻿using eWolfPixelStandard.Data;
-using System;
 using System.Drawing;
 
 namespace eWolfPixelUI.Helpers
