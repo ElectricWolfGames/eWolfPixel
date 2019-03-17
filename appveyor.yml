@@ -13,3 +13,7 @@ build:
   publish_nuget_symbols: false
   include_nuget_references: false
   verbosity: minimal
+
+  test_script:
+  - cmd: dotnet nunit
+  - cmd: dotnet test "C:\projects\eWolfPixel\Pixel\eWolfPixelStandard.UnitTests\eWolfPixelStandard.UnitTests.csproj" --no-build --logger:Appveyor
