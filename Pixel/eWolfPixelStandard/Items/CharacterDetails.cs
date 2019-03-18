@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Project;
 using eWolfPixelStandard.Services;
+using eWolfUnity3DParser.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -39,7 +40,7 @@ namespace eWolfPixelStandard.Items
 
         private void InportFromUnity(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SpriteSheetData spriteSheetData = SpriteParser.Parse("Test file");
         }
 
         private void AddAnimation(object sender, EventArgs e)
