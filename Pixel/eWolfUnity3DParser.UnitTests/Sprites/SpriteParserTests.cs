@@ -31,8 +31,8 @@ namespace eWolfUnity3DParser.UnitTests.Sprites
             string rawFile = Helpers.Helpers.LoadFile(@"Player04.png.meta");
             SpriteSheetData spriteSheetData = SpriteParser.Parse(rawFile);
             spriteSheetData.NamesMap.Should().HaveCount(66);
-            spriteSheetData.NamesMap["21300000"].Should().Be("PL04_Left_Walk0");
-            spriteSheetData.NamesMap["21300022"].Should().Be("PL04_DownRight_Walk0");
+            spriteSheetData.NamesMap["PL04_Left_Walk0"].Should().Be("21300000");
+            spriteSheetData.NamesMap["PL04_DownRight_Walk0"].Should().Be("21300022");
         }
 
         [Test]

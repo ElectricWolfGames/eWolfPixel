@@ -1,6 +1,7 @@
 ﻿using eWolfUnity3DParser.Sprites.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace eWolfUnity3DParser.Sprites
 {
@@ -21,7 +22,7 @@ namespace eWolfUnity3DParser.Sprites
                 while (!line.Contains("externalObjects"))
                 {
                     string[] items = line.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                    NamesMap.Add(items[0].Trim(), items[1].Trim());
+                    NamesMap.Add(items[1].Trim(), items[0].Trim());
 
                     line = sfr.ReadLine();
                 }
@@ -47,13 +48,18 @@ namespace eWolfUnity3DParser.Sprites
         private SpritePivot ParsePivot(string line)
         {
             SpritePivot pivot = new SpritePivot();
-            // pivot: {x: 0.5, y: 0}
             string[] parts = line.Split(':');
             string x = parts[2].Replace(", y", string.Empty).Trim();
             string y = parts[3].Replace("}", string.Empty).Trim();
             pivot.X = float.Parse(x);
             pivot.Y = float.Parse(y);
             return pivot;
+        }
+
+        public IEnumerable<string> GetAnimationFrames(string animName)
+        {
+            return NamesMap.Where(x => x.Key.Contains(animName))
+                .Select(x => x.Key).OrderBy(x => x);
         }
 
         private SpriteData ReadSprite(SpriteSheetFileReader sfr)
