@@ -1,4 +1,6 @@
-﻿namespace eWolfUnity3DParser.Sprites
+﻿using System;
+
+namespace eWolfUnity3DParser.Sprites
 {
     public class SpriteSheetFileReader
     {
@@ -13,6 +15,27 @@
         public string ReadLine()
         {
             return _lines[_index++];
+        }
+
+        public string ReadLineSplitValue()
+        {
+            string pair = _lines[_index++];
+            string[] parts = pair.Split(':');
+            return parts[1].Trim();
+        }
+
+        public string ReadLineSplitKey()
+        {
+            string pair = _lines[_index++];
+            string[] parts = pair.Split(':');
+            return parts[0].Trim();
+        }
+
+        public void ReadUntil(string textToFind)
+        {
+            while (_lines[_index++] != textToFind)
+            {
+            }
         }
     }
 }

@@ -15,5 +15,14 @@ namespace eWolfUnity3DParser.UnitTests.Sprites
             spriteSheetFileReader.ReadLine().Should().Be("b");
             spriteSheetFileReader.ReadLine().Should().Be("c");
         }
+
+        [Test]
+        public void ShouldReadLinesUntil()
+        {
+            string rawFile = "a\nb\nc\nd";
+            SpriteSheetFileReader spriteSheetFileReader = new SpriteSheetFileReader(rawFile);
+            spriteSheetFileReader.ReadUntil("c");
+            spriteSheetFileReader.ReadLine().Should().Be("d");
+        }
     }
 }
