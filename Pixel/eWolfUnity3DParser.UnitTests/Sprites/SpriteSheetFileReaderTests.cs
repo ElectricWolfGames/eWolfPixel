@@ -17,6 +17,22 @@ namespace eWolfUnity3DParser.UnitTests.Sprites
         }
 
         [Test]
+        public void ShouldReadLineSplitKey()
+        {
+            string rawFile = "a:b";
+            SpriteSheetFileReader spriteSheetFileReader = new SpriteSheetFileReader(rawFile);
+            spriteSheetFileReader.ReadLineSplitKey().Should().Be("a");
+        }
+
+        [Test]
+        public void ShouldReadLineSplitValue()
+        {
+            string rawFile = "a:b";
+            SpriteSheetFileReader spriteSheetFileReader = new SpriteSheetFileReader(rawFile);
+            spriteSheetFileReader.ReadLineSplitValue().Should().Be("b");
+        }
+
+        [Test]
         public void ShouldReadLinesUntil()
         {
             string rawFile = "a\nb\nc\nd";
