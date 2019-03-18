@@ -1,2 +1,3 @@
 # eWolfPixel
-[![Generic badge]https://img.shields.io/appveyor/ci/ElectricWolfGames/ewolfpixel.svg?style=plastic](https://shields.io/)
+<img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/ElectricWolfGames/eWolfPixel.svg">
+
