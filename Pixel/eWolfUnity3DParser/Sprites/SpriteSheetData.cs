@@ -6,6 +6,10 @@ namespace eWolfUnity3DParser.Sprites
 {
     public class SpriteSheetData
     {
+        public Dictionary<string, string> NamesMap = new Dictionary<string, string>();
+
+        public Dictionary<string, SpriteData> SpritesMap = new Dictionary<string, SpriteData>();
+
         public SpriteSheetData(SpriteSheetFileReader sfr)
         {
             FileFormatVersion = sfr.ReadLine().Replace("fileFormatVersion: ", string.Empty);
@@ -26,39 +30,19 @@ namespace eWolfUnity3DParser.Sprites
             sfr.ReadLine();
             sfr.ReadLine();
 
+            int count = NamesMap.Count;
+
             SpriteData sd = ReadSprite(sfr);
-            SpritesMap.Add(sd.Name, sd);
+            while (sd != null)
+            {
+                SpritesMap.Add(sd.Name, sd);
+                sd = ReadSprite(sfr);
+            }
         }
 
-        private SpriteData ReadSprite(SpriteSheetFileReader sfr)
-        {
-            SpriteData sd = new SpriteData();
+        public string FileFormatVersion { get; set; }
 
-            sfr.ReadLine();
-            // name: PL04_Left_Walk0
-            sd.Name = sfr.ReadLine().Split(':')[1].Trim();
-            sfr.ReadLine(); // rect:
-            sfr.ReadLine(); // serializedVersion: 2
-            sd.Rect.X = int.Parse(sfr.ReadLineSplitValue());
-            sd.Rect.Y = int.Parse(sfr.ReadLineSplitValue());
-            sd.Rect.Width = int.Parse(sfr.ReadLineSplitValue());
-            sd.Rect.Height = int.Parse(sfr.ReadLineSplitValue());
-
-            sfr.ReadLine(); //       alignment: 7
-            sd.Pivot = ParsePivot(sfr.ReadLine()); //       pivot: {x: 0.5, y: 0}
-            sfr.ReadLine(); //       border: {x: 0, y: 0, z: 0, w: 0}
-            sfr.ReadLine(); //       outline: []
-            sfr.ReadLine(); //       physicsShape: []
-            sfr.ReadLine(); //       tessellationDetail: 0
-            sfr.ReadLine(); //       bones: []
-            sfr.ReadLine(); //       spriteID: 2f9a5b012f5af2747902bba879ef1838
-            sfr.ReadLine(); //       vertices: []
-            sfr.ReadLine(); //       indices:
-            sfr.ReadLine(); //       edges: []
-            sfr.ReadLine(); //       weights: []
-
-            return sd;
-        }
+        public string FileGuid { get; set; }
 
         private SpritePivot ParsePivot(string line)
         {
@@ -72,10 +56,38 @@ namespace eWolfUnity3DParser.Sprites
             return pivot;
         }
 
-        public string FileFormatVersion { get; set; }
-        public string FileGuid { get; set; }
+        private SpriteData ReadSprite(SpriteSheetFileReader sfr)
+        {
+            SpriteData sd = new SpriteData();
+            string outline = sfr.ReadLine();
+            if (outline.Contains("outline"))
+            {
+                return null;
+            }
 
-        public Dictionary<string, string> NamesMap = new Dictionary<string, string>();
-        public Dictionary<string, SpriteData> SpritesMap = new Dictionary<string, SpriteData>();
+            // name: PL04_Left_Walk0
+            sd.Name = sfr.ReadLine().Split(':')[1].Trim();
+            sfr.ReadLine(); // rect:
+            sfr.ReadLine(); // serializedVersion: 2
+            sd.Rect.X = int.Parse(sfr.ReadLineSplitValue());
+            sd.Rect.Y = int.Parse(sfr.ReadLineSplitValue());
+            sd.Rect.Width = int.Parse(sfr.ReadLineSplitValue());
+            sd.Rect.Height = int.Parse(sfr.ReadLineSplitValue());
+
+            sd.Alignment = int.Parse(sfr.ReadLineSplitValue()); //       alignment: 7
+            sd.Pivot = ParsePivot(sfr.ReadLine()); //       pivot: {x: 0.5, y: 0}
+            sfr.ReadLine(); //       border: {x: 0, y: 0, z: 0, w: 0}
+            sfr.ReadLine(); //       outline: []
+            sfr.ReadLine(); //       physicsShape: []
+            sfr.ReadLine(); //       tessellationDetail: 0
+            sfr.ReadLine(); //       bones: []
+            sd.SpriteID = sfr.ReadLineSplitValue(); //       spriteID: 2f9a5b012f5af2747902bba879ef1838
+            sfr.ReadLine(); //       vertices: []
+            sfr.ReadLine(); //       indices:
+            sfr.ReadLine(); //       edges: []
+            sfr.ReadLine(); //       weights: []
+
+            return sd;
+        }
     }
 }
