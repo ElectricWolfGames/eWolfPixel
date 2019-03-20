@@ -97,6 +97,11 @@ namespace eWolfPixelStandard.Items
             }
         }
 
+        internal void SetAnimFrame(int direction, int frame, PixelSet pixelSet)
+        {
+            _pixelAnimations[direction, frame] = pixelSet;
+        }
+
         public void Rebuild()
         {
             for (int i = 0; i < 8; i++)

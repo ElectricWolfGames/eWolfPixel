@@ -10,8 +10,10 @@
             return sd;
         }
 
-        public void ParseLoad(string fileName)
+        public static SpriteSheetData ParseLoad(string fileName)
         {
+            string raw = System.IO.File.ReadAllText(fileName);
+            return Parse(raw);
         }
     }
 }

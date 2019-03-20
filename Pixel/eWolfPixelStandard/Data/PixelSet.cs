@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using eWolfUnity3DParser.Sprites;
+using eWolfUnity3DParser.Sprites.Data;
 
 namespace eWolfPixelStandard.Data
 {
@@ -60,7 +63,7 @@ namespace eWolfPixelStandard.Data
                     {
                         if (y < oldHeight)
                         {
-                            copy[x, y] = _pixel[x, y];
+                            _pixel[x, y] = copy[x, y];
                         }
                     }
                 }
@@ -76,6 +79,36 @@ namespace eWolfPixelStandard.Data
                 return;
 
             _pixel[x, y] = color;
+        }
+
+        internal Dictionary<string, PixelSet> CutFrames(SpriteSheetData spriteSheetData)
+        {
+            Dictionary<string, PixelSet> pixelSet = new Dictionary<string, PixelSet>();
+
+            Dictionary<string, SpriteData> spriteFrames = spriteSheetData.SpritesMap;
+            foreach (KeyValuePair<string, SpriteData> kvp in spriteFrames)
+            {
+                PixelSet set = Cut(kvp.Value.Rect);
+                pixelSet.Add(kvp.Key, set);
+            }
+            return pixelSet;
+        }
+
+        private PixelSet Cut(SpriteDataRect rect)
+        {
+            int width = rect.Width;
+            int height = rect.Height;
+
+            PixelSet ps = new PixelSet(width, height);
+
+            for (int i = 0; i < rect.Width; i++)
+            {
+                for (int j = 0; j < rect.Height; j++)
+                {
+                    ps.Pixels[i, j] = Pixels[i + rect.X, (512 - (rect.Y + rect.Height)) + j];
+                }
+            }
+            return ps;
         }
 
         private void FillTransparent()

@@ -41,11 +41,11 @@ namespace eWolfPixelUI.Services
         {
             Pixel[,] pixels = pixelSet.Pixels;
 
-            Bitmap previewImage = new Bitmap(64, 64);
+            Bitmap previewImage = new Bitmap(pixelSet.Width, pixelSet.Height);
 
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < pixelSet.Width - 1; i++)
             {
-                for (int j = 0; j < 24; j++)
+                for (int j = 0; j < pixelSet.Height - 1; j++)
                 {
                     Color col = PixelHelper.PixelColor(pixels[i, j]);
 

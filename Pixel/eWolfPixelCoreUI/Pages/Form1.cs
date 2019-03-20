@@ -165,6 +165,7 @@ namespace eWolfPixelCoreUI
         private void InitializeServices()
         {
             ServiceLocator.Instance.InjectService<IExportImage>(new ExportImages());
+            ServiceLocator.Instance.InjectService<IPixelLoader>(new PixelLoader());
             ServiceLocator.Instance.InjectService<IMainUI>(this);
             ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
         }
