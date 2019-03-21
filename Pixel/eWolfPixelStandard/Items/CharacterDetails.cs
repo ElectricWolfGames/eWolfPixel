@@ -1,4 +1,5 @@
 ﻿using eWolfPixelStandard.Data;
+using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Project;
 using eWolfPixelStandard.Services;
@@ -59,31 +60,67 @@ namespace eWolfPixelStandard.Items
             leftWalk.Add(frames["PL04_Left_Walk1"]);
             leftWalk.Add(frames["PL04_Left_Walk0"]);
             leftWalk.Add(frames["PL04_Left_Walk2"]);
-            AddFrameToAnim(0, ad, leftWalk);
+            AddFrameToAnim(Directions8Way.Left, ad, leftWalk);
 
             List<PixelSet> downLeftWalk = new List<PixelSet>();
             downLeftWalk.Add(frames["PL04_DownLeft_Walk0"]);
             downLeftWalk.Add(frames["PL04_DownLeft_Walk1"]);
             downLeftWalk.Add(frames["PL04_DownLeft_Walk0"]);
             downLeftWalk.Add(frames["PL04_DownLeft_Walk2"]);
-            AddFrameToAnim(1, ad, downLeftWalk);
+            AddFrameToAnim(Directions8Way.DownLeft, ad, downLeftWalk);
+
+            List<PixelSet> downRightWalk = new List<PixelSet>();
+            downRightWalk.Add(frames["PL04_DownRight_Walk0"]);
+            downRightWalk.Add(frames["PL04_DownRight_Walk1"]);
+            downRightWalk.Add(frames["PL04_DownRight_Walk0"]);
+            downRightWalk.Add(frames["PL04_DownRight_Walk2"]);
+            AddFrameToAnim(Directions8Way.DownRight, ad, downRightWalk);
 
             List<PixelSet> rightWalk = new List<PixelSet>();
             rightWalk.Add(frames["PL04_Right_Walk0"]);
             rightWalk.Add(frames["PL04_Right_Walk1"]);
             rightWalk.Add(frames["PL04_Right_Walk0"]);
             rightWalk.Add(frames["PL04_Right_Walk2"]);
-            AddFrameToAnim(2, ad, rightWalk);
+            AddFrameToAnim(Directions8Way.Right, ad, rightWalk);
+
+            List<PixelSet> upLeftWalk = new List<PixelSet>();
+            upLeftWalk.Add(frames["PL04_UpLeft_Walk0"]);
+            upLeftWalk.Add(frames["PL04_UpLeft_Walk1"]);
+            upLeftWalk.Add(frames["PL04_UpLeft_Walk0"]);
+            upLeftWalk.Add(frames["PL04_UpLeft_Walk2"]);
+            AddFrameToAnim(Directions8Way.UpLeft, ad, upLeftWalk);
+
+            List<PixelSet> upWalk = new List<PixelSet>();
+            upWalk.Add(frames["PL04_Up_Walk0"]);
+            upWalk.Add(frames["PL04_Up_Walk1"]);
+            upWalk.Add(frames["PL04_Up_Walk0"]);
+            upWalk.Add(frames["PL04_Up_Walk2"]);
+            AddFrameToAnim(Directions8Way.Up, ad, upWalk);
+
+            List<PixelSet> downWalk = new List<PixelSet>();
+            downWalk.Add(frames["PL04_Down_Walk0"]);
+            downWalk.Add(frames["PL04_Down_Walk1"]);
+            downWalk.Add(frames["PL04_Down_Walk0"]);
+            downWalk.Add(frames["PL04_Down_Walk2"]);
+            AddFrameToAnim(Directions8Way.Down, ad, downWalk);
+
+            List<PixelSet> upRightWalk = new List<PixelSet>();
+            upRightWalk.Add(frames["PL04_UpRight_Walk0"]);
+            upRightWalk.Add(frames["PL04_UpRight_Walk1"]);
+            upRightWalk.Add(frames["PL04_UpRight_Walk0"]);
+            upRightWalk.Add(frames["PL04_UpRight_Walk2"]);
+            AddFrameToAnim(Directions8Way.UpRight, ad, upRightWalk);
 
             ad.Save(projectHolder.ProjectPath);
         }
 
-        private static void AddFrameToAnim(int direction, AnimationDetails ad, List<PixelSet> leftWalk)
+        private static void AddFrameToAnim(Directions8Way direction, AnimationDetails ad, List<PixelSet> leftWalk)
         {
+            int dir = Directions8WayHelper.GetDirectionIndex(direction);
             int index = 0;
             foreach (var frame in leftWalk)
             {
-                ad.SetAnimFrame(direction, index++, frame);
+                ad.SetAnimFrame(dir, index++, frame);
             }
         }
 
