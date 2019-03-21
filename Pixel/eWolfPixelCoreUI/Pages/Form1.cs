@@ -1,4 +1,6 @@
-﻿using eWolfPixelStandard.Interfaces;
+﻿using eWolfPixelStandard.Data;
+using eWolfPixelStandard.Helpers;
+using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
 using eWolfPixelStandard.Project;
 using eWolfPixelStandard.Services;
@@ -14,10 +16,10 @@ namespace eWolfPixelCoreUI
     public partial class Form1 : Form, IMainUI
     {
         private AnimationPreview _animationPreview;
+        private ItemsBase _clickedOnItem = null;
         private ImageEditor _imageEditor = new ImageEditor();
         private ProjectHolder _projectHolder = new ProjectHolder();
         private ItemsBase _selectedItem;
-        private ItemsBase _clickedOnItem = null;
 
         public Form1()
         {
@@ -185,6 +187,16 @@ namespace eWolfPixelCoreUI
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Point localMousePosition = pictureBox1.PointToClient(Cursor.Position);
+            int x = localMousePosition.X / 32;
+            int y = localMousePosition.Y / 32;
+
+            Directions8Way dir = Directions8WayHelper.GetDirectionFromGrid(x, y);
+            _imageEditor.SetDirection(dir);
+        }
+
         private void SaveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _projectHolder.SaveProject();
@@ -200,6 +212,11 @@ namespace eWolfPixelCoreUI
             _animationPreview.Tick();
             try
             {
+                if (_selectedItem == null)
+                    return;
+                if (!(_selectedItem is IEditable))
+                    return;
+
                 string name = _selectedItem.Name + " " + ((IEditable)_selectedItem).CurrentFrame;
                 this.Text = name;
             }

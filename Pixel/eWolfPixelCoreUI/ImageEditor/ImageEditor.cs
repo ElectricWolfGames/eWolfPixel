@@ -1,4 +1,5 @@
 ﻿using eWolfPixelStandard.Data;
+using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
 using System;
@@ -271,6 +272,13 @@ namespace eWolfPixelUI.ImageEditor
                 }
             }
             return image;
+        }
+
+        public void SetDirection(Directions8Way dir)
+        {
+            _itemsBase.Direction = Directions8WayHelper.GetDirectionIndex(dir);
+            DrawFrame();
+            ShowFrame();
         }
 
         private void DrawFrame()
