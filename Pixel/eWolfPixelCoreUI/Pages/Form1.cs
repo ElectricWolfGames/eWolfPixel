@@ -170,6 +170,7 @@ namespace eWolfPixelCoreUI
             ServiceLocator.Instance.InjectService<IPixelLoader>(new PixelLoader());
             ServiceLocator.Instance.InjectService<IMainUI>(this);
             ServiceLocator.Instance.InjectService<ProjectHolder>(_projectHolder);
+            ServiceLocator.Instance.InjectService<IEditNameUI>(new EditNameUI());
         }
 
         private void OpenItem(TreeViewEventArgs e)

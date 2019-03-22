@@ -40,6 +40,26 @@ namespace eWolfPixelStandard.Items
             };
         }
 
+        private static void AddFrameToAnim(Directions8Way direction, AnimationDetails ad, List<PixelSet> leftWalk)
+        {
+            int dir = Directions8WayHelper.GetDirectionIndex(direction);
+            int index = 0;
+            foreach (var frame in leftWalk)
+            {
+                ad.SetAnimFrame(dir, index++, frame);
+            }
+        }
+
+        private void AddAnimation(object sender, EventArgs e)
+        {
+            ProjectHolder.AddAnimation(this);
+        }
+
+        private void AddCharacter(object sender, EventArgs e)
+        {
+            ProjectHolder.AddCharactor(this);
+        }
+
         private void InportFromUnity(object sender, EventArgs e)
         {
             string filename = @"C:\GitHub\eWolfPixel\Pixel\eWolfUnity3DParser.UnitTests\TestingData\Player04.png";
@@ -112,30 +132,6 @@ namespace eWolfPixelStandard.Items
             AddFrameToAnim(Directions8Way.UpRight, ad, upRightWalk);
 
             ad.Save(projectHolder.ProjectPath);
-        }
-
-        private static void AddFrameToAnim(Directions8Way direction, AnimationDetails ad, List<PixelSet> leftWalk)
-        {
-            int dir = Directions8WayHelper.GetDirectionIndex(direction);
-            int index = 0;
-            foreach (var frame in leftWalk)
-            {
-                ad.SetAnimFrame(dir, index++, frame);
-            }
-        }
-
-        private void AddAnimation(object sender, EventArgs e)
-        {
-            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
-            projectHolder.CreateAnimation("Walk", "\\Root\\Char1");
-            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
-        }
-
-        private void AddCharacter(object sender, EventArgs e)
-        {
-            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
-            projectHolder.CreateCharacter("Char1", "\\Root");
-            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
         }
     }
 }

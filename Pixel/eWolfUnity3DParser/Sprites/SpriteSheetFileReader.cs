@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace eWolfUnity3DParser.Sprites
+﻿namespace eWolfUnity3DParser.Sprites
 {
     public class SpriteSheetFileReader
     {

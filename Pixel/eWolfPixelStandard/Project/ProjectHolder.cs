@@ -1,6 +1,7 @@
 ﻿using eWolfPixelStandard.Helpers;
 using eWolfPixelStandard.Interfaces;
 using eWolfPixelStandard.Items;
+using eWolfPixelStandard.Services;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -36,6 +37,7 @@ namespace eWolfPixelStandard.Project
         {
             AnimationDetails ad = new AnimationDetails(name, path);
             Items.Add(ad);
+            ad.PostLoadFix();
             ad.Save(_projectPath);
         }
 
@@ -68,6 +70,54 @@ namespace eWolfPixelStandard.Project
         public ItemsBase RootNode()
         {
             return new FolderDetails("Root", string.Empty);
+        }
+
+        public void SaveProject()
+        {
+            foreach (ItemsBase item in Items)
+            {
+                ISaveable saveable = item as ISaveable;
+                if (saveable != null)
+                {
+                    saveable.Save(_projectPath);
+                }
+            }
+        }
+
+        internal static void AddAnimation(ItemsBase root)
+        {
+            IEditNameUI editNameUI = ServiceLocator.Instance.GetService<IEditNameUI>();
+            string name = editNameUI.EditName("Animation", "Name");
+
+            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
+            projectHolder.CreateAnimation(name, root.FullPath);
+            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
+        }
+
+        internal static void AddCharactor(ItemsBase root)
+        {
+            IEditNameUI editNameUI = ServiceLocator.Instance.GetService<IEditNameUI>();
+            string name = editNameUI.EditName("Charactor", "Name");
+
+            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
+            projectHolder.CreateCharacter(name, root.FullPath);
+            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
+        }
+
+        private bool AnyAnimsInFolder(string filepath)
+        {
+            if (Path.HasExtension(filepath))
+                return false;
+
+            List<string> files = FileHelper.GetAllFiles(filepath);
+            foreach (string file in files)
+            {
+                if (Path.GetExtension(file).ToUpper() == ".ANIM")
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private ItemsBase LoadItem(ItemTypes itemType, string file)
@@ -104,34 +154,6 @@ namespace eWolfPixelStandard.Project
             }
 
             return null;
-        }
-
-        private bool AnyAnimsInFolder(string filepath)
-        {
-            if (Path.HasExtension(filepath))
-                return false;
-
-            List<string> files = FileHelper.GetAllFiles(filepath);
-            foreach (string file in files)
-            {
-                if (Path.GetExtension(file).ToUpper() == ".ANIM")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public void SaveProject()
-        {
-            foreach (ItemsBase item in Items)
-            {
-                ISaveable saveable = item as ISaveable;
-                if (saveable != null)
-                {
-                    saveable.Save(_projectPath);
-                }
-            }
         }
     }
 }

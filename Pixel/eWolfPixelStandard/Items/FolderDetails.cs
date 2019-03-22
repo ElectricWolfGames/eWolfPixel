@@ -1,6 +1,4 @@
-﻿using eWolfPixelStandard.Interfaces;
-using eWolfPixelStandard.Project;
-using eWolfPixelStandard.Services;
+﻿using eWolfPixelStandard.Project;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -29,16 +27,12 @@ namespace eWolfPixelStandard.Items
 
         private void AddAnimation(object sender, EventArgs e)
         {
-            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
-            projectHolder.CreateAnimation("Walk", "\\Root\\Char1");
-            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
+            ProjectHolder.AddAnimation(this);
         }
 
         private void AddCharacter(object sender, EventArgs e)
         {
-            ProjectHolder projectHolder = ServiceLocator.Instance.GetService<ProjectHolder>();
-            projectHolder.CreateCharacter("Char1", "\\Root");
-            ServiceLocator.Instance.GetService<IMainUI>().PopulateTree();
+            ProjectHolder.AddCharactor(this);
         }
     }
 }

@@ -49,6 +49,13 @@
     <Compile Include="ImageEditor\AnimationPreview.cs" />
     <Compile Include="ImageEditor\ColorSelection.cs" />
     <Compile Include="ImageEditor\FrameHolder.cs" />
+    <Compile Include="Pages\NameItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\NameItem.Designer.cs">
+      <DependentUpon>NameItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EditNameUI.cs" />
     <Compile Include="Services\ExportImages.cs" />
     <Compile Include="Helpers\PixelHelper.cs" />
     <Compile Include="ImageEditor\ImageEditor.cs" />
@@ -64,6 +71,9 @@
     <Compile Include="Services\PixelLoader.cs" />
     <EmbeddedResource Include="Pages\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\NameItem.resx">
+      <DependentUpon>NameItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
