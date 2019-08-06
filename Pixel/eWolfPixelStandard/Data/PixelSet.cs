@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using eWolfUnity3DParser.Sprites;
+﻿using eWolfUnity3DParser.Sprites;
 using eWolfUnity3DParser.Sprites.Data;
+using System;
+using System.Collections.Generic;
 
 namespace eWolfPixelStandard.Data
 {

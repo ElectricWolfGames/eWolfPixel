@@ -4,6 +4,7 @@ using eWolfPixelStandard.Interfaces;
 using eWolfPixelUI.Helpers;
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace eWolfPixelUI.ImageEditor
@@ -168,10 +169,24 @@ namespace eWolfPixelUI.ImageEditor
             if (_scale < 0)
                 _scale = 1;
 
-            FrameHolder.Image = CreateDefaultImage(400, 500);
-            FrameHolder.Color = null;
+            ClearAllCaches();
             DrawFrame();
             ShowFrame();
+        }
+
+        private void ClearAllCaches()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int frame = 0; frame < 4; frame++)
+                {
+                    if (_frameHolder[i, frame] != null)
+                    {
+                        _frameHolder[i, frame].Image = CreateDefaultImage(400, 500);
+                        _frameHolder[i, frame].Color = null;
+                    }
+                }
+            }
         }
 
         internal void PickColorFromEditImage(Point localMousePosition)
@@ -286,7 +301,10 @@ namespace eWolfPixelUI.ImageEditor
             CheckItem();
 
             Pixel[,] pixels = _itemsBase.PixelArray;
-            for (int i = 0; i < _itemsBase.FrameSize.FrameWidth; i++)
+
+            ImageBuilder.UpdateImage(FrameHolder, _itemsBase, pixels, this);
+
+            /*for (int i = 0; i < _itemsBase.FrameSize.FrameWidth; i++)
             {
                 for (int j = 0; j < _itemsBase.FrameSize.FrameHeight; j++)
                 {
@@ -300,16 +318,16 @@ namespace eWolfPixelUI.ImageEditor
                         DrawScaledPixel(i, j, col);
                     }
                 }
-            }
+            }*/
         }
 
-        private void DrawScaledPixel(int x, int y, Color col)
+        internal void DrawScaledPixel(int x, int y, Color col)
         {
             int scaleX = x * _scale;
             int scaleY = y * _scale;
             int start = ShowGridPixels ? 1 : 0;
 
-            for (int i = start; i < _scale; i++)
+            /*for (int i = start; i < _scale; i++)
             {
                 int mainX = scaleX + i + ImageOffSetX;
                 if (mainX >= ImageEditWidth)
@@ -323,7 +341,44 @@ namespace eWolfPixelUI.ImageEditor
 
                     FrameHolder.Image.SetPixel(mainX, mainY, col);
                 }
+            }*/
+
+            /*BitmapData data = FrameHolder.Image.LockBits(
+                new Rectangle(0, 0, FrameHolder.Image.Width, FrameHolder.Image.Height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+                */
+            /*
+        int stride = data.Stride;
+        unsafe
+        {
+            byte* ptr = (byte*)data.Scan0;
+            for (int i = start; i < _scale; i++)
+            {
+                int mainX = scaleX + i + ImageOffSetX;
+                if (mainX >= ImageEditWidth)
+                    continue;
+
+                for (int j = start; j < _scale; j++)
+                {
+                    int mainY = scaleY + j + ImageOffSetY;
+                    if (mainY >= ImageEditHeight)
+                        continue;
+
+                    ptr[(mainX * 3) + mainY * stride] = col.B;
+                    ptr[(mainX * 3) + mainY * stride + 1] = col.G;
+                    ptr[(mainX * 3) + mainY * stride + 2] = col.R;
+                }
             }
+            /*
+            // layer.GetBitmap().SetPixel(x, y, m_colour);
+            ptr[(x * 3) + y * stride] = m_colour.B;
+                        ptr[(x * 3) + y * stride + 1] = m_colour.G;
+                        ptr[(x * 3) + y * stride + 2] = m_colour.R;
+                    }
+                }
+            }*/
+            //}*/
+            //FrameHolder.Image.UnlockBits(data);
         }
 
         private void PickColorFromColorImage(Point localMousePosition)
