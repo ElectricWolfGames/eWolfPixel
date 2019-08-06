@@ -39,9 +39,9 @@ namespace eWolfPixelCommon.Data
             get
             {
                 return (A == 0
-               && B == 0
-               && G == 0
-               && R == 0);
+                    && B == 0
+                    && G == 0
+                    && R == 0);
             }
         }
 
