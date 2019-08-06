@@ -5,9 +5,9 @@ namespace eWolfPixelCommon.Data
     [Serializable]
     public class Pixel
     {
-        public static Pixel Black = new Pixel(255, 0, 0, 0);
-        public static Pixel Red = new Pixel(255, 255, 0, 0);
-        public static Pixel White = new Pixel(255, 255, 255, 255);
+        public static readonly Pixel Black = new Pixel(255, 0, 0, 0);
+        public static readonly Pixel Red = new Pixel(255, 255, 0, 0);
+        public static readonly Pixel White = new Pixel(255, 255, 255, 255);
 
         public Pixel(byte a, byte r, byte g, byte b)
         {
@@ -64,7 +64,7 @@ namespace eWolfPixelCommon.Data
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return A.GetHashCode() ^ B.GetHashCode() ^ G.GetHashCode() ^ R.GetHashCode();
         }
     }
 }

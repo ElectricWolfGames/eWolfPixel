@@ -12,11 +12,11 @@ namespace eWolfPixelApp.Items
 
     public class Animation
     {
-        private List<Sprite> _sprites = new List<Sprite>();
+        private readonly List<Sprite> _sprites = new List<Sprite>();
     }
 
     public class Charactor
     {
-        private List<Animation> _animations = new List<Animation>();
+        private readonly List<Animation> _animations = new List<Animation>();
     }
 }

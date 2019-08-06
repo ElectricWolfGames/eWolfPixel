@@ -389,7 +389,7 @@ namespace eWolfPixelUI.ImageEditor
                 Color col = image.GetPixel(localMousePosition.X, localMousePosition.Y);
                 _colorSelection.CurrentColor = PixelHelper.Create(col);
             }
-            catch (Exception ex)
+            catch
             {
                 // fail safe
                 int i = 0;

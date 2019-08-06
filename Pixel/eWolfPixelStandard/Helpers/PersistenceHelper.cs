@@ -42,7 +42,7 @@ namespace eWolfPixelStandard.Helpers
 
                 return sd;
             }
-            catch (System.Exception ex)
+            catch
             {
                 if (stream != null)
                     stream.Close();
@@ -76,7 +76,7 @@ namespace eWolfPixelStandard.Helpers
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch
             {
                 if (stream != null)
                     stream.Close();
@@ -93,7 +93,7 @@ namespace eWolfPixelStandard.Helpers
                 formatter.Serialize(stream, objectToSave);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
